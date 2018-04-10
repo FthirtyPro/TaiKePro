@@ -43,7 +43,9 @@ public class Knapsack : MonoBehaviour {
         }
         else
         {
-            _inventoryPopup.Show(it);
+            InventoryItemUI itUI = objectArray[2] as InventoryItemUI;
+
+            _inventoryPopup.Show(it, itUI);
         }
 
 

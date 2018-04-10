@@ -508,4 +508,18 @@ public class PlayerInfo : MonoBehaviour {
         OnPlayerInfoChanged(InfoType.Equip);
 
     }
+
+    public void InventoryUse(InventoryItem it, int count)
+    {
+        //使用效果在这里实现；
+
+
+
+        //处理物品使用后是否还存在
+        it.Count -= count;
+        if(it.Count<=0)
+        {
+            InventoryManager._instance.inventoryItemList.Remove(it);
+        }
+    }
 }

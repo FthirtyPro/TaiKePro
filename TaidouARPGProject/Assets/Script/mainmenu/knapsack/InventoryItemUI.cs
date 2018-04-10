@@ -76,6 +76,22 @@ public class InventoryItemUI : MonoBehaviour {
         }
     }
 
+    //icon数量减少
+    public void ChangeCount(int count)
+    {
+        if(it.Count-count<=0)
+        {
+            Clean();
+        }else if(it.Count-count==1)
+        {
+            Label.text = "";
+        }
+        else
+        {
+            Label.text = (it.Count - count).ToString();
+        }
+    }
+
 
     public void OnClose()
     {
