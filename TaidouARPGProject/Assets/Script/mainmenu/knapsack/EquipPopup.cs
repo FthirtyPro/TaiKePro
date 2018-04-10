@@ -133,6 +133,11 @@ public class EquipPopup : MonoBehaviour {
             print(coinNeed);
             print(PlayerInfo._instanc.Coin);
            
+           
+        }
+        else
+        {
+            MessageManger._instance.ShowMessage("金币不足,无法升级",0.3f);
         }
     }
 
