@@ -1,59 +1,90 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class PowerShow : MonoBehaviour {
-    
-    private float startValue = 0;
-    private int endValue = 0;
-    private bool isStart = false;
-    private UILabel numLabel;
-    private bool isUp = true;
-    private TweenAlpha tween;
-    public int speed = 1000;
 
-    void Awake() {
+    private int startValue = 0;
+    private float endValue = 0;
+    private bool isStart = false;
+    public int Speed = 100;
+    private UILabel numLabel;
+    private TweenAlpha tween;
+
+    private bool isUp = true;//数字是否增加；
+
+    private void Awake()
+    {
         numLabel = transform.Find("Label").GetComponent<UILabel>();
         tween = this.GetComponent<TweenAlpha>();
-        EventDelegate ed = new EventDelegate(this, "OnTweenFinished");
-        tween.onFinished.Add(ed);
+
         gameObject.SetActive(false);
+        EventDelegate ed = new EventDelegate(this, "OnTweenfinish");
+        tween.onFinished.Add(ed);
     }
 
-    void Update() {
-        if (isStart) {
-            if (isUp) {
-                startValue += speed * Time.deltaTime;
-                if (startValue > endValue) {
+
+    private void Update()
+    {
+        if(isStart==true)
+        {
+            if(isUp)
+            {
+                startValue +=(int)( Speed * Time.deltaTime);
+                if(startValue > endValue)
+                {
+                    startValue = (int)endValue;
                     isStart = false;
-                    startValue = endValue;
-                    tween.PlayReverse();
-                }
-            } else {
-                startValue -= speed * Time.deltaTime;
-                if (startValue < endValue) {
-                    isStart = false;
-                    startValue = endValue;
                     tween.PlayReverse();
                 }
             }
-            numLabel.text = (int)startValue + "";
+            else
+            {
+                startValue -= (int)(Speed * Time.deltaTime);
+                if (startValue < endValue)
+                {
+         
+                    isStart = false;
+                    startValue = (int)endValue;
+                    tween.PlayReverse();
+                }
 
+            }
+
+            numLabel.text = (int)startValue + "";
         }
     }
-    public void OnTweenFinished() {
-        if (isStart == false) {
+
+
+
+    public void ShowPowerChange(int StartValue,int endValue)//设置对外的接口
+    {
+        gameObject.SetActive(true);
+        tween.PlayForward();
+        this.startValue = StartValue;
+        this.endValue = endValue;
+
+        if(endValue>StartValue)
+        {
+            isUp = true;
+        }
+        else
+        {
+            isUp = false;
+
+        }
+        isStart = true;
+
+    }
+
+
+
+    public void OnTweenfinish()
+    {
+        if(isStart == false)
+        {
             gameObject.SetActive(false);
         }
     }
-    public void ShowPowerChange(int startValue,int endValue) {
-        gameObject.SetActive(true);
-        tween.PlayForward();
-        this.startValue = startValue;
-        this.endValue = endValue;
-        if (endValue > startValue)
-            isUp = true;
-        else
-            isUp = false;
-        isStart = true;
-    }
+
 }
