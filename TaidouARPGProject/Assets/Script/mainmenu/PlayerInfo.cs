@@ -522,4 +522,57 @@ public class PlayerInfo : MonoBehaviour {
             InventoryManager._instance.inventoryItemList.Remove(it);
         }
     }
+
+    public int GetOverallPower() //方法得到总体的武力数值；
+    {
+        int power = this.Power;
+        if(helmInventoryItem!=null)
+        {
+            power += helmInventoryItem.Inventory.Power * (1 + (helmInventoryItem.Level - 1) / 10);
+        }
+        if(braceletInventoryItem!=null)
+        {
+            power += braceletInventoryItem.Inventory.Power * (1 + (braceletInventoryItem.Level - 1) / 10);
+
+        }
+        if (necklaceInventoryItem != null)
+        {
+            power += necklaceInventoryItem.Inventory.Power * (1 + (necklaceInventoryItem.Level - 1) / 10);
+
+        }
+        if (clothInventoryItem != null)
+        {
+            power += clothInventoryItem.Inventory.Power * (1 + (clothInventoryItem.Level - 1) / 10);
+
+        }
+        if (necklaceInventoryItem != null)
+        {
+            power += necklaceInventoryItem.Inventory.Power * (1 + (necklaceInventoryItem.Level - 1) / 10);
+
+        }
+        if (weaponInventoryItem != null)
+        {
+            power += weaponInventoryItem.Inventory.Power * (1 + (weaponInventoryItem.Level - 1) / 10);
+
+        }
+
+        if (shoesInventoryItem != null)
+        {
+            power += shoesInventoryItem.Inventory.Power * (1 + (shoesInventoryItem.Level - 1) / 10);
+
+        }
+        if (ringInventoryItem != null)
+        {
+            power += ringInventoryItem.Inventory.Power * (1 + (ringInventoryItem.Level - 1) / 10);
+
+        }
+        if (wingInventoryItem != null)
+        {
+            power += wingInventoryItem.Inventory.Power * (1 + (wingInventoryItem.Level - 1) / 10);
+
+        }
+
+
+        return (int)power;
+    }
 }

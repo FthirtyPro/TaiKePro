@@ -22,6 +22,8 @@ public class EquipPopup : MonoBehaviour {
     private UIButton upgradeButton;
     private KnapsackRoleEquip roleEquip;
 
+    public PowerShow power;
+
 
     void Awake()
     {
@@ -90,6 +92,7 @@ public class EquipPopup : MonoBehaviour {
     }
     public void OnEquip()
     {
+        int startValue = PlayerInfo._instanc.GetOverallPower();
         if(isLeft)
         {
             itUI.Clean();
@@ -107,6 +110,8 @@ public class EquipPopup : MonoBehaviour {
 
         ClearObject();
         gameObject.SetActive(false);
+        int endValue = PlayerInfo._instanc.GetOverallPower();
+        power.ShowPowerChange(startValue, endValue);
 
     }
 
