@@ -438,7 +438,7 @@ public class PlayerInfo : MonoBehaviour {
 
     public void DressOff(InventoryItem it)
     {
-        //it.IsDress = true;
+        it.IsDress = false;
         //bool isDressed = false;
         //InventoryItem inventoryItemDress = null;
         switch (it.Inventory.EquipType)
@@ -503,7 +503,7 @@ public class PlayerInfo : MonoBehaviour {
 
         }
 
-        it.IsDress = true;
+      // it.IsDress = true;
         InventoryUI._instance.AddInventory(it);
         OnPlayerInfoChanged(InfoType.Equip);
 
