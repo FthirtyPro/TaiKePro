@@ -63,11 +63,19 @@ public class InventoryPopup : MonoBehaviour {
 
     void OnClose()
     {
+        Close();
 
+
+        transform.parent.SendMessage("DisableButton");
+
+
+    }
+
+    public void Close()
+    {
         Clear();
 
         gameObject.SetActive(false);
-
     }
 
     public void OnBatch()

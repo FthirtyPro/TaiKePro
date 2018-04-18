@@ -575,4 +575,10 @@ public class PlayerInfo : MonoBehaviour {
 
         return (int)power;
     }
+
+    public void AddCoin(int coin)
+    {
+        this.Coin += coin;
+        OnPlayerInfoChanged(InfoType.Coin);
+    }
 }

@@ -8,6 +8,7 @@ public class InventoryUI : MonoBehaviour {
     public  List<InventoryItemUI> itemList = new List<InventoryItemUI>();
     private UIButton clearUpButton;
     private UILabel InventoryLabel;
+  
 
     private int count = 0;
 
@@ -22,7 +23,7 @@ public class InventoryUI : MonoBehaviour {
 
         EventDelegate ed = new EventDelegate(this, "OnClearUp");
         clearUpButton.onClick.Add(ed);
-
+        
 
     }
 

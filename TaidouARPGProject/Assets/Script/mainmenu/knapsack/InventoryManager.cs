@@ -103,7 +103,10 @@ public class InventoryManager : MonoBehaviour
         }
     }
    
-   
+    public void RemoveInventoryItem(InventoryItem it)
+    {
+        this.inventoryItemList.Remove(it);
+    }
    
    
     void ReadServeInventoryItem()
@@ -160,6 +163,10 @@ public class InventoryManager : MonoBehaviour
 
     }
 }
+
+
+
+
 
 
 //到这里角色的装备初始化已经完成了

@@ -86,6 +86,12 @@ public class EquipPopup : MonoBehaviour {
     }
     public void OnClose()
     {
+        Close();
+        transform.parent.SendMessage("DisableButton");
+    }
+
+    public void Close()
+    {
         gameObject.SetActive(false);
 
         ClearObject();
@@ -113,6 +119,9 @@ public class EquipPopup : MonoBehaviour {
         int endValue = PlayerInfo._instanc.GetOverallPower();
         power.ShowPowerChange(startValue, endValue);
         InventoryUI._instance.SendMessage("UpdageCount");
+
+        transform.parent.SendMessage("DisableButton");
+
 
 
     }
