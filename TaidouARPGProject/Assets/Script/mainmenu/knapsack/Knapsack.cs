@@ -11,12 +11,17 @@ public class Knapsack : MonoBehaviour {
     private InventoryItemUI itUI;
     public  UIButton ButtonSale;
     private UILabel priceLabel;
+    private TweenPosition tweenPosition;
 
+    private UIButton CloseButton;
+
+    private static Knapsack _instance;
     //private InventoryItemUI itUI;
 
 
     private void Awake()
     {
+        _instance = this;
         equipPopup =transform.Find("EquipPopup").GetComponent<EquipPopup>();
         _inventoryPopup = transform.Find("InventoryPopup").GetComponent<InventoryPopup>();
         ButtonSale = transform.Find("Inventory/ButtonSale").GetComponent<UIButton>();
@@ -25,7 +30,11 @@ public class Knapsack : MonoBehaviour {
         EventDelegate ed = new EventDelegate(this, "OnSale");
         ButtonSale.onClick.Add(ed);
 
+        tweenPosition = this.GetComponent<TweenPosition>();
 
+        CloseButton = transform.Find("CloseButton").GetComponent<UIButton>();
+        EventDelegate ed1 = new EventDelegate(this, "CloseButtonLab");
+        CloseButton.onClick.Add(ed1);
 
     }
 
@@ -92,6 +101,18 @@ public class Knapsack : MonoBehaviour {
     }
 
 
+    public void Show()
+    {
+        tweenPosition.PlayForward();
+
+    }
+
+    public void Hidden()
+    {
+        tweenPosition.PlayReverse();
+
+    }
+
     public void OnSale()
     {
         int price = int.Parse(priceLabel.text);
@@ -103,5 +124,10 @@ public class Knapsack : MonoBehaviour {
         _inventoryPopup.Close();
         DisableButton();
 
+    }
+
+    public void CloseButtonLab()
+    {
+        Hidden();
     }
 }
