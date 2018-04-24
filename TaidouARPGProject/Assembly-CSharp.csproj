@@ -224,7 +224,6 @@
      <Compile Include="Assets\Script\common\GameController.cs" />
      <Compile Include="Assets\Script\common\MessageManger.cs" />
      <Compile Include="Assets\Script\common\NPCManager.cs" />
-     <Compile Include="Assets\Script\common\TaskManager.cs" />
      <Compile Include="Assets\Script\mainmenu\knapsack\EquipPopup.cs" />
      <Compile Include="Assets\Script\mainmenu\knapsack\Inventory.cs" />
      <Compile Include="Assets\Script\mainmenu\knapsack\InventoryItem.cs" />
@@ -238,6 +237,8 @@
      <Compile Include="Assets\Script\mainmenu\knapsack\PowerShow.cs" />
      <Compile Include="Assets\Script\mainmenu\PlayerInfo.cs" />
      <Compile Include="Assets\Script\mainmenu\Task\Task.cs" />
+     <Compile Include="Assets\Script\mainmenu\Task\TaskItemUI.cs" />
+     <Compile Include="Assets\Script\mainmenu\Task\TaskManager.cs" />
      <Compile Include="Assets\Script\mainmenu\transcriptmap\BtnTranscript.cs" />
      <Compile Include="Assets\Script\mainmenu\transcriptmap\LoadSceneProgressBar.cs" />
      <Compile Include="Assets\Script\mainmenu\transcriptmap\TranscriptMapDialog.cs" />
