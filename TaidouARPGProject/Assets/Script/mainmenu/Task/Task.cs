@@ -157,6 +157,19 @@ public int Id {
         }
     }
 
-	//构造方法完成；
-	///任务类的完成；
+    public TaskProgress Taskprogress
+    {
+        get
+        {
+            return taskProgress;
+        }
+
+        set
+        {
+            taskProgress = value;
+        }
+    }
+
+    //构造方法完成；
+    ///任务类的完成；
 }

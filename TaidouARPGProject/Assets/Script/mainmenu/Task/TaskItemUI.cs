@@ -58,14 +58,54 @@ public class TaskItemUI : MonoBehaviour {
 			break;
 			   
 
- 
-
-
 		   }
+        nameLabel.text = task.Name;
+        iconSprite.spriteName = task.Icon;
+        desLabel.text = task.Des;
+        //reward1Sprite.spriteName = task
+        if(task.Coin>0 && task.Diamond>0)
+        {
+            reward1Sprite.spriteName = "金币";
+            reward1Label.text = "X" + task.Coin;
+            reward2Sprite.spriteName = "钻石";
+            reward2Label.text = "X" + task.Diamond;
+
+        }else if(task.Coin>0)
+        {
+            reward1Sprite.spriteName = "金币";
+            reward1Label.text = "X" + task.Coin;
+            reward2Sprite.gameObject.SetActive(false);
+            reward2Label.gameObject.SetActive(false);
+        }
+        else if (task.Diamond > 0)
+        {
+            reward2Sprite.spriteName = "钻石";
+            reward2Label.text = "X" + task.Diamond;
+            reward1Sprite.gameObject.SetActive(false);
+            reward1Label.gameObject.SetActive(false);
+        }
+
+        switch(task.Taskprogress)
+        {
+            case Task.TaskProgress.NoStart:
+                rewardButton.gameObject.SetActive(false);
+                combatLabel.text = "下一步";
+                break;
+            case Task.TaskProgress.Accept:
+                rewardButton.gameObject.SetActive(false);
+                combatLabel.text = "战斗";
+                break;
+            case Task.TaskProgress.Complete:
+                combatButton.gameObject.SetActive(false);
+                //combatLabel.text = "下一步";
+                break;
+            case Task.TaskProgress.ReWard:
+                break;
+        }
 
 
 
-	   }
+    }
 
 
 
