@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class TaskManager : MonoBehaviour {
 
+public static TaskManager _instance;
+
 public TextAsset taskinfoText;
 private ArrayList taskList=new ArrayList();
+
+void Awake()
+{
+	_instance =this;
+	InitTask();
+}
 
 /// <summary>
 /// 初始化任务信息列表
@@ -44,5 +52,13 @@ private ArrayList taskList=new ArrayList();
 
 	 }
  }
+
+
+	//方法得到tasklist
+	public ArrayList GetTaskList()
+	{
+		return taskList;
+	}
+
 
 }

@@ -244,6 +244,7 @@
      <Compile Include="Assets\Script\mainmenu\transcriptmap\TranscriptMapDialog.cs" />
      <Compile Include="Assets\Script\mainmenu\transcriptmap\TranscriptMapUI.cs" />
      <Compile Include="Assets\Script\start\ServerProperty.cs" />
+     <Compile Include="Assets\TaskUI.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\NGUI\ReadMe - 3.11.4.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked 1.shader" />

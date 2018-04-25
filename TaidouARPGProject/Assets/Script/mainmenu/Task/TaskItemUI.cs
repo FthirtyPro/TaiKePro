@@ -27,7 +27,7 @@ public class TaskItemUI : MonoBehaviour {
 		reward1Sprite = transform.Find("Reward1Sprite").GetComponent<UISprite>();
 		reward1Label = transform.Find("Reward1Label").GetComponent<UILabel>();
 		
-		reward2Sprite = transform.Find("Reward12prite").GetComponent<UISprite>();
+		reward2Sprite = transform.Find("Reward2Sprite").GetComponent<UISprite>();
 		reward2Label = transform.Find("Reward2Label").GetComponent<UILabel>();
 		
 		rewardButton =transform.Find("RewardButton").GetComponent<UIButton>();
@@ -99,8 +99,7 @@ public class TaskItemUI : MonoBehaviour {
                 combatButton.gameObject.SetActive(false);
                 //combatLabel.text = "下一步";
                 break;
-            case Task.TaskProgress.ReWard:
-                break;
+          
         }
 
 
