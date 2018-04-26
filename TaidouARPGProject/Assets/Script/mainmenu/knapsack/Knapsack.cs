@@ -5,7 +5,7 @@ using UnityEngine;
 public class Knapsack : MonoBehaviour {
 
     // Use this for initialization
-
+    
     private EquipPopup equipPopup;
     private InventoryPopup _inventoryPopup;
     private InventoryItemUI itUI;
@@ -15,7 +15,7 @@ public class Knapsack : MonoBehaviour {
 
     private UIButton CloseButton;
 
-    private static Knapsack _instance;
+    public static Knapsack _instance;
     //private InventoryItemUI itUI;
 
 

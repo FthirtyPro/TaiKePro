@@ -4,10 +4,11 @@
     // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+    
         {
-            "type": "node",
+            "type": "unity",
             "request": "launch",
-            "name": "启动程序",
+            "name": "Unity Editor",
             "program": "${file}"
         }
     ]
