@@ -162,7 +162,7 @@ public class InventoryManager : MonoBehaviour
            
         }
 
-  //  OnInventoryChange();
+  OnInventoryChange();
 
     }
 }
