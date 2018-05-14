@@ -451,6 +451,7 @@
     <Compile Include="Assets\NGUI\Scripts\UI\UITexture.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
+    <Compile Include="Assets\Script\common\BottomBar.cs" />
     <Compile Include="Assets\Script\common\FollowTarget.cs" />
     <Compile Include="Assets\Script\common\GameController.cs" />
     <Compile Include="Assets\Script\common\MessageManger.cs" />
@@ -470,10 +471,12 @@
     <Compile Include="Assets\Script\mainmenu\Task\Task.cs" />
     <Compile Include="Assets\Script\mainmenu\Task\TaskItemUI.cs" />
     <Compile Include="Assets\Script\mainmenu\Task\TaskManager.cs" />
+    <Compile Include="Assets\Script\mainmenu\Task\TaskUI.cs" />
     <Compile Include="Assets\Script\mainmenu\transcriptmap\BtnTranscript.cs" />
     <Compile Include="Assets\Script\mainmenu\transcriptmap\LoadSceneProgressBar.cs" />
     <Compile Include="Assets\Script\mainmenu\transcriptmap\TranscriptMapDialog.cs" />
     <Compile Include="Assets\Script\mainmenu\transcriptmap\TranscriptMapUI.cs" />
+    <Compile Include="Assets\Script\Player\PlayerMove.cs" />
     <Compile Include="Assets\Script\start\ServerProperty.cs" />
   </ItemGroup>
   <ItemGroup>
