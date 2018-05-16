@@ -4,7 +4,7 @@ using System.Collections;
 public class FollowTarget : MonoBehaviour {
 
     public Vector3 offset;
-    private Transform playerBip;
+    public Transform playerBip;
 
 	// Use this for initialization
 	void Start () {
