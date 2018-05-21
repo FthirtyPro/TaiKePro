@@ -220,6 +220,7 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UITexture.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
+     <Compile Include="Assets\playerAutoMove.cs" />
      <Compile Include="Assets\Script\common\BottomBar.cs" />
      <Compile Include="Assets\Script\common\FollowTarget.cs" />
      <Compile Include="Assets\Script\common\GameController.cs" />
@@ -246,8 +247,9 @@
      <Compile Include="Assets\Script\mainmenu\transcriptmap\TranscriptMapDialog.cs" />
      <Compile Include="Assets\Script\mainmenu\transcriptmap\TranscriptMapUI.cs" />
      <Compile Include="Assets\Script\Player\PlayerAnimatar.cs" />
-     <Compile Include="Assets\Script\Player\PlayerMove.cs" />
      <Compile Include="Assets\Script\Player\PlayerNav.cs" />
+     <Compile Include="Assets\Script\Player\PlayerVillageAnimatorl.cs" />
+     <Compile Include="Assets\Script\Player\PlayervillageMove.cs" />
      <Compile Include="Assets\Script\start\ServerProperty.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\NGUI\ReadMe - 3.11.4.txt" />

@@ -5,6 +5,7 @@ using UnityEngine;
 public class TaskManager : MonoBehaviour {
 
 public static TaskManager _instance;
+private Task currentTask;
 
 public TextAsset taskinfoText;
 private ArrayList taskList=new ArrayList();
@@ -59,6 +60,14 @@ void Awake()
 	{
 		return taskList;
 	}
+
+	public void OnExecuteTask(Task task)
+	{
+		currentTask = task;
+		if(task.Taskprogress == Task.TaskProgress.NoStart )
+		{
+			//PlayerNav.set
+		}
 
 
 }
