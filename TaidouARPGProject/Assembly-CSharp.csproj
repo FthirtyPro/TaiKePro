@@ -245,7 +245,9 @@
      <Compile Include="Assets\Script\mainmenu\transcriptmap\LoadSceneProgressBar.cs" />
      <Compile Include="Assets\Script\mainmenu\transcriptmap\TranscriptMapDialog.cs" />
      <Compile Include="Assets\Script\mainmenu\transcriptmap\TranscriptMapUI.cs" />
+     <Compile Include="Assets\Script\Player\PlayerAnimatar.cs" />
      <Compile Include="Assets\Script\Player\PlayerMove.cs" />
+     <Compile Include="Assets\Script\Player\PlayerNav.cs" />
      <Compile Include="Assets\Script\start\ServerProperty.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\NGUI\ReadMe - 3.11.4.txt" />

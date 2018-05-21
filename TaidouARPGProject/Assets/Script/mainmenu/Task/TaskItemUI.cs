@@ -109,5 +109,15 @@ public class TaskItemUI : MonoBehaviour {
 
 
 
+public void TaskCombat()
+{
+    TaskManager._instance.OnExecuteTask(task);
+}
+
+public void TaskReward()
+{
+    
+}
+
 
 }
