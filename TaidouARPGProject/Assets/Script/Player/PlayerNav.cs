@@ -17,10 +17,13 @@ public class PlayerNav : MonoBehaviour {
 		
 		if(agent.enabled)
 		{
-			if(agent.remainingDistance<3)
+			if(agent.remainingDistance < 3 &&agent.remainingDistance!=0)
 			{
-				//agent.isStopped();
+				//print(agent.remainingDistance);
+				
+				agent.isStopped =true;
 				agent.enabled =false;
+
 			}
 		}
 
@@ -31,5 +34,6 @@ public class PlayerNav : MonoBehaviour {
 	{
 		agent.enabled =true;
 		agent.SetDestination(tagpos);
+		print(tagpos);
 	}
 }

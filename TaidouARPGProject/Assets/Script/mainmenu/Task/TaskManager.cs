@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TaskManager : MonoBehaviour {
 
@@ -9,12 +10,30 @@ private Task currentTask;
 
 public TextAsset taskinfoText;
 private ArrayList taskList=new ArrayList();
+private PlayerNav playAutorun;
+
+
+
+
+private PlayerNav PlayAutorun{
+
+	get{
+		if(playAutorun ==null)
+		{
+			playAutorun =GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerNav>();
+		}
+		return playAutorun;
+	}
+}
 
 void Awake()
 {
 	_instance =this;
 	InitTask();
+
 }
+
+
 
 /// <summary>
 /// 初始化任务信息列表
@@ -66,8 +85,16 @@ void Awake()
 		currentTask = task;
 		if(task.Taskprogress == Task.TaskProgress.NoStart )
 		{
-			//PlayerNav.set
-		}
+			TaskUI._instance.tween.PlayReverse();
+			
+			PlayAutorun.SetDestination(NPCManager._instance.GetNpcById(task.IdNpc).transform.position);
+		
+		}else if(task.Taskprogress == Task.TaskProgress.Accept )
+			{
+				PlayAutorun.SetDestination(NPCManager._instance.transcriptGo.transform.position);
+			}
+
+	}
 
 
 }
