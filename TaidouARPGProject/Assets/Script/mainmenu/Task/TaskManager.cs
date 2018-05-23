@@ -97,4 +97,15 @@ void Awake()
 	}
 
 
+
+	public void OnAcceptTask()
+	{
+
+	}
+	public void OnArrivedPos()
+	{
+		
+
+	}
+
 }

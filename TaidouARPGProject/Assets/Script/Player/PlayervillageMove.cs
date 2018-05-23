@@ -18,26 +18,25 @@ public class PlayervillageMove : MonoBehaviour {
 		float v =Input.GetAxis("Vertical");
 		Vector3 vel = rig.velocity;
 
-
-
 		if(Mathf.Abs(h)>0.05f || Mathf.Abs(v)>0.05f)
 		{
 			rig.velocity= new Vector3(-h*velocity,vel.y,-v*velocity);
 			
 			transform.rotation =Quaternion.LookRotation(new Vector3(-h,0,-v));
 
-		// }else{
-		// 	if(agent.enabled ==false)
+		}else
+		{
+			if(agent.enabled == false)
 
-		// 	rig.velocity=Vector3.zero;
+			rig.velocity=Vector3.zero;
+
+		}
+		if(agent.enabled)
+		{transform.rotation =Quaternion.LookRotation(agent.velocity);}
+		
 			
-		// }
-		// if(agent.enabled)
-		// {
-		// 	transform.rotation =Quaternion.LookRotation(agent.velocity);
-		// }
-
+		
 	}
-	}
+	
 
 }

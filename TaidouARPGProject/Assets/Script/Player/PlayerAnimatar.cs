@@ -13,7 +13,7 @@ public class PlayerAnimatar : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		rig = this.GetComponent<Rigidbody>();
-			if(rig.velocity.magnitude>0.5f)
+			if(rig.velocity.magnitude>0.8f)
 			{
 				ani.SetBool("move",true);
 
