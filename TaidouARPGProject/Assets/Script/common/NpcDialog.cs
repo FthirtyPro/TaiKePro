@@ -39,7 +39,7 @@ public class NpcDialog : MonoBehaviour {
 		tween.PlayReverse();
 	}
 
-	void Show(string NpcTalk )
+	public void Show(string NpcTalk )
 	{
 		npcTalkLable.text =NpcTalk;
 		tween.PlayForward();

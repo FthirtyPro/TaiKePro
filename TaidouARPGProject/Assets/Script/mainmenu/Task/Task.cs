@@ -33,6 +33,10 @@ public class Task {
 	private TaskProgress taskProgress = TaskProgress.NoStart;
 
 
+    public delegate void OnTaskChangeEvent();//委托
+    public event OnTaskChangeEvent OnTaskChange;//事件
+
+
 public int Id {
 		get {
 			return id;
@@ -166,7 +170,12 @@ public int Id {
 
         set
         {
+            if(taskProgress!=value)
+            {
             taskProgress = value;
+            OnTaskChange();
+                
+            }
         }
     }
 

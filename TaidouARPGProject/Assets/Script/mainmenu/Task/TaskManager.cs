@@ -100,11 +100,24 @@ void Awake()
 
 	public void OnAcceptTask()
 	{
+		currentTask.Taskprogress=Task.TaskProgress.Accept;
 
+	///自动行进到副本入口
+	PlayAutorun.SetDestination(NPCManager._instance.transcriptGo.transform.position);
 	}
 	public void OnArrivedPos()
 	{
-		
+		if(currentTask.Taskprogress ==Task.TaskProgress.NoStart)
+		{
+			
+			NpcDialog._instance.Show(currentTask.TalkNpc);
+
+
+		}
+
+	//到达副本入口	!
+
+
 
 	}
 

@@ -27,5 +27,8 @@ public class NPCManager : MonoBehaviour {
 
         return go;
     }
+
+
+    
 	
 }

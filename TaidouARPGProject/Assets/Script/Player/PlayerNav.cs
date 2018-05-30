@@ -24,6 +24,9 @@ public class PlayerNav : MonoBehaviour {
 				agent.isStopped =true;
 				agent.enabled =false;
 
+				TaskManager._instance.OnArrivedPos();
+		
+
 			}
 		}
 

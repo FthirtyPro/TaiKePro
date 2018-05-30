@@ -48,7 +48,16 @@ public class TaskItemUI : MonoBehaviour {
        public void SetTask(Task task)
 	   {
 		   this.task = task;
-		   switch(task.Tasktype)
+           task.OnTaskChange += this.OnTaskChange;
+		  
+    UpdateShow();
+
+    }
+
+
+    void  UpdateShow()
+    {
+         switch(task.Tasktype)
 		   {
 			   case Task.TaskType.Main:
 
@@ -108,8 +117,6 @@ public class TaskItemUI : MonoBehaviour {
           
         }
 
-
-
     }
 
 
@@ -123,6 +130,14 @@ public void TaskCombat()
 public void TaskReward()
 {
     
+}
+
+
+
+
+public void OnTaskChange()
+{
+    UpdateShow();
 }
 
 
