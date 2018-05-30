@@ -466,6 +466,7 @@
     <Compile Include="Assets\Script\common\FollowTarget.cs" />
     <Compile Include="Assets\Script\common\GameController.cs" />
     <Compile Include="Assets\Script\common\MessageManger.cs" />
+    <Compile Include="Assets\Script\common\NpcDialog.cs" />
     <Compile Include="Assets\Script\common\NPCManager.cs" />
     <Compile Include="Assets\Script\mainmenu\knapsack\EquipPopup.cs" />
     <Compile Include="Assets\Script\mainmenu\knapsack\Inventory.cs" />
@@ -479,6 +480,8 @@
     <Compile Include="Assets\Script\mainmenu\knapsack\KnapsackRoleEquip.cs" />
     <Compile Include="Assets\Script\mainmenu\knapsack\PowerShow.cs" />
     <Compile Include="Assets\Script\mainmenu\PlayerInfo.cs" />
+    <Compile Include="Assets\Script\mainmenu\Skill\Skill.cs" />
+    <Compile Include="Assets\Script\mainmenu\Skill\SkillManager.cs" />
     <Compile Include="Assets\Script\mainmenu\Task\Task.cs" />
     <Compile Include="Assets\Script\mainmenu\Task\TaskItemUI.cs" />
     <Compile Include="Assets\Script\mainmenu\Task\TaskManager.cs" />
@@ -487,6 +490,8 @@
     <Compile Include="Assets\Script\mainmenu\transcriptmap\LoadSceneProgressBar.cs" />
     <Compile Include="Assets\Script\mainmenu\transcriptmap\TranscriptMapDialog.cs" />
     <Compile Include="Assets\Script\mainmenu\transcriptmap\TranscriptMapUI.cs" />
+    <Compile Include="Assets\Script\Player\PlayerAnimatar.cs" />
+    <Compile Include="Assets\Script\Player\PlayerNav.cs" />
     <Compile Include="Assets\Script\Player\PlayerVillageAnimatorl.cs" />
     <Compile Include="Assets\Script\Player\PlayervillageMove.cs" />
     <Compile Include="Assets\Script\start\ServerProperty.cs" />
