@@ -5,17 +5,16 @@ using UnityEngine;
 public class SkillManager : MonoBehaviour {
 
     public TextAsset skill;
+    private ArrayList skillList = new ArrayList();
+
     public static SkillManager _instance;
 
     private void Awake()
     {
         _instance = this;
-        ///readSkillText();
-    }
-    private void Start()
-    {
         readSkillText();
     }
+    
 
     public void readSkillText()
     {
@@ -24,7 +23,7 @@ public class SkillManager : MonoBehaviour {
 
         foreach(string arr in str)
         {
-            string[] arrstr = arr.Split('|');
+            string[] arrstr = arr.Split(',');
 
             Skill skillarr = new Skill();
             skillarr.Id = int.Parse(arrstr[0]);
@@ -45,11 +44,11 @@ public class SkillManager : MonoBehaviour {
             switch (arrstr[4])
             {
                 case "Basic":
-                    skillarr.Skilltype =Skill.SkillType.Basic;
+                    skillarr.SkillType =SkillType.Basic;
                     break;
 
                 case "Skill":
-                    skillarr.Skilltype = Skill.SkillType.Skill;
+                    skillarr.SkillType = SkillType.Skill;
 
                     break;
 
@@ -58,33 +57,49 @@ public class SkillManager : MonoBehaviour {
             switch (arrstr[5])
             {
                 case "Basic":
-                    skillarr.Postype = Skill.PosType.Basic;
+                    skillarr.PosType = PosType.Basic;
                     break;
 
                 case "One":
-                    skillarr.Postype = Skill.PosType.One;
+                    skillarr.PosType = PosType.One;
 
                     break;
 
                 case "Two":
-                    skillarr.Skilltype = Skill.SkillType.Skill;
+                    skillarr.PosType = PosType.Two;
 
                     break;
 
                 case "Three":
-                    skillarr.Skilltype = Skill.SkillType.Skill;
+                    skillarr.PosType = PosType.Three;
 
                     break;
 
             }
 
-            skillarr.Cold = int.Parse(arrstr[6]);
+            skillarr.ColdTime = int.Parse(arrstr[6]);
             skillarr.Damage = int.Parse(arrstr[7]);
 
 
-
+        skillList.Add(skillarr);
 
         }
+    }
+
+
+    public Skill GetSkillbyPosition(PosType postype)
+    {
+        //Skill skill =new Skill();
+        PlayerInfo info = PlayerInfo._instanc;
+
+        foreach(Skill skill in skillList)
+        {
+            if(skill.PlayerType== info.PlayerType&& skill.PosType==postype)
+
+             return skill;
+            
+        }
+        return null;
     }
 
 

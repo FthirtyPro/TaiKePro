@@ -21,6 +21,8 @@ public enum PlayerType {
     FemaleAssassin
 }
 
+
+
 public class PlayerInfo : MonoBehaviour {
 
     public static PlayerInfo _instanc;

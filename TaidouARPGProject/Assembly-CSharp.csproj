@@ -239,6 +239,10 @@
      <Compile Include="Assets\Script\mainmenu\knapsack\KnapsackRoleEquip.cs" />
      <Compile Include="Assets\Script\mainmenu\knapsack\PowerShow.cs" />
      <Compile Include="Assets\Script\mainmenu\PlayerInfo.cs" />
+     <Compile Include="Assets\Script\mainmenu\Skill\Skill.cs" />
+     <Compile Include="Assets\Script\mainmenu\Skill\SkillItemUI.cs" />
+     <Compile Include="Assets\Script\mainmenu\Skill\SkillManager.cs" />
+     <Compile Include="Assets\Script\mainmenu\Skill\SkillUI.cs" />
      <Compile Include="Assets\Script\mainmenu\Task\Task.cs" />
      <Compile Include="Assets\Script\mainmenu\Task\TaskItemUI.cs" />
      <Compile Include="Assets\Script\mainmenu\Task\TaskManager.cs" />

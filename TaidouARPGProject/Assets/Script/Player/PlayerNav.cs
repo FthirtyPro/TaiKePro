@@ -37,6 +37,6 @@ public class PlayerNav : MonoBehaviour {
 	{
 		agent.enabled =true;
 		agent.SetDestination(tagpos);
-		print(tagpos);
+		//print(tagpos);
 	}
 }
