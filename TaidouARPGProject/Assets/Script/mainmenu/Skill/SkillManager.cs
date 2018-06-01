@@ -89,7 +89,7 @@ public class SkillManager : MonoBehaviour {
 
     public Skill GetSkillbyPosition(PosType postype)
     {
-        //Skill skill =new Skill();
+        
         PlayerInfo info = PlayerInfo._instanc;
 
         foreach(Skill skill in skillList)

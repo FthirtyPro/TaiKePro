@@ -35,6 +35,13 @@ public class SkillItemUI : MonoBehaviour
 
 	}
 
+    void OnClick()
+    {
+       
+            transform.parent.parent.SendMessage("OnSkillClick",skill);
+      
+    }
+
 
 
 }

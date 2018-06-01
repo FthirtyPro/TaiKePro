@@ -11,6 +11,9 @@ public class BottomBar : MonoBehaviour {
 	private UIButton SystemButton;
 	private UIButton TaskButton;
 	private UIButton KnapsackButton;
+
+private TweenPosition tweenPosition;
+
 void Awake()
 {
 	CombatButton= transform.Find("Combat").GetComponent<UIButton>();
@@ -36,7 +39,7 @@ void Awake()
 	
 	EventDelegate ed6= new EventDelegate(this,"OnKnapsack");
 	KnapsackButton.onClick.Add(ed6);
-	
+	tweenPosition = this.GetComponent<TweenPosition>();
 }
 
 void OnCombat()
@@ -47,6 +50,7 @@ void OnCombat()
 void OnSkill()
 {
 
+	SkillUI._instance.tweenPosition.PlayForward();
 }
 void OnShop()
 {
