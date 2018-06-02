@@ -51,9 +51,8 @@ public class SkillUI : MonoBehaviour
 	void DisableUpdateButton(string label ="")
 	{
 		updateButton.SetState(UIButton.State.Disabled,true);
-        //dateButton.enabled=false;
-        //updateButton.SetState(UIButton.State.Hover,true);
-        //pdateButton.disabledColor = Color.gray;
+        updateButton.enabled=false;
+        
         updateButton.SetState(UIButtonColor.State.Disabled, true);
         if (label!="")
 		{
@@ -108,12 +107,17 @@ public class SkillUI : MonoBehaviour
 	{
         if(skill.Level<=PlayerInfo._instanc.Level)
         {
-            //if(500 * (skill.Level + 1) <= PlayerInfo._instanc.Coin)
+            
             int coinNeed = 500 * (skill.Level + 1);
             bool isSucced = PlayerInfo._instanc.GetCoin(coinNeed);
             if(isSucced)
             { skill.Upgrade();
-                print(PlayerInfo._instanc.Coin);
+                //print(PlayerInfo._instanc.Coin);
+                OnSkillClick( skill);
+            }
+            else{
+            DisableUpdateButton("金币不足");
+                
             }
         }
         else
