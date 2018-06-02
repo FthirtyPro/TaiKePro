@@ -31,8 +31,8 @@ public class PlayervillageMove : MonoBehaviour {
 			rig.velocity=Vector3.zero;
 
 		}
-		if(agent.enabled)
-		{transform.rotation =Quaternion.LookRotation(agent.velocity);}
+		//if(agent.enabled)
+		//{transform.rotation =Quaternion.LookRotation(agent.velocity);}
 		
 			
 		

@@ -42,7 +42,7 @@ public class SkillUI : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    // Update is called once per frameup
     void Update()
     {
 
@@ -51,9 +51,11 @@ public class SkillUI : MonoBehaviour
 	void DisableUpdateButton(string label ="")
 	{
 		updateButton.SetState(UIButton.State.Disabled,true);
-		updateButton.enabled=false;
-		updateButton.SetState(UIButton.State.Hover,true);
-		if(label!="")
+        //dateButton.enabled=false;
+        //updateButton.SetState(UIButton.State.Hover,true);
+        //pdateButton.disabledColor = Color.gray;
+        updateButton.SetState(UIButtonColor.State.Disabled, true);
+        if (label!="")
 		{
 			updateLabel.text =label;
 		}
@@ -78,19 +80,46 @@ public class SkillUI : MonoBehaviour
 
 
 
+        //取得玩家身上金币数目，如果金钱，等级够才能升级，如诺不够，则不能升级。
+       PlayerInfo player=PlayerInfo._instanc;
+        int coin = player.Coin;
 
+        if(500*(skill.Level+1)<=coin)
+        {
+            skillTitle.text = skill.Name + "LV." + skill.Level;
+            skillDes.text = "当前技能攻击力为：" + skill.Damage + "*" + skill.Level + "下级攻击力";
 
-
-		skillTitle.text = skill.Name +"LV."+skill.Level;
-		skillDes.text ="当前技能攻击力为："+skill.Damage + "*" +skill.Level+"下级攻击力";
+            EnableUpdateButton("升级");
+            // Debug.Log(coin);
+            print(coin);
+        }
+        else
+        {
+            skillTitle.text = skill.Name + "LV." + skill.Level;
+            skillDes.text = "当前技能攻击力为：" + skill.Damage + "*" + skill.Level + "下级攻击力";
+            DisableUpdateButton("金币不足");
+        }
 		
-		EnableUpdateButton("升级");
 
 
 	}
 
 	void OnUpdateButton()
 	{
+        if(skill.Level<=PlayerInfo._instanc.Level)
+        {
+            //if(500 * (skill.Level + 1) <= PlayerInfo._instanc.Coin)
+            int coinNeed = 500 * (skill.Level + 1);
+            bool isSucced = PlayerInfo._instanc.GetCoin(coinNeed);
+            if(isSucced)
+            { skill.Upgrade();
+                print(PlayerInfo._instanc.Coin);
+            }
+        }
+        else
+        {
+            DisableUpdateButton("最大等级");
+        }
 		
 	}
 
