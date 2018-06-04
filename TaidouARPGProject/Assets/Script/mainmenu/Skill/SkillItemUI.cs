@@ -7,6 +7,7 @@ public class SkillItemUI : MonoBehaviour
 
     public PosType postype;
     private Skill skill;
+    public bool isSelect;
 
     private UISprite sprite;
     private UISprite Sprite
@@ -25,6 +26,10 @@ public class SkillItemUI : MonoBehaviour
 	void Start()
 	{
 		updateShow();
+        if(isSelect)
+        {
+            OnClick();
+        }
 	}
 
 	void updateShow()
