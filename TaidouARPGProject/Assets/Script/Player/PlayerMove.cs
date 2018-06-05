@@ -17,9 +17,10 @@ void Awake()
 		float v = Input.GetAxis("Vertical");
 
 		Vector3 nowVel = rig.velocity;
-		if(Mathf.Abs(h)>0.01f ||Mathf.Abs(v)>0.01f )
+		if(Mathf.Abs(h)>0.05f ||Mathf.Abs(v)>0.05f )
 		{
 			rig.velocity = new Vector3(velocty*h,0,velocty*v);
+			transform.LookAt(new Vector3(h,0,v)+transform.position);
 			animator.SetBool("Move",true);
 		}else{
 			rig.velocity = new Vector3(0,0,0);
