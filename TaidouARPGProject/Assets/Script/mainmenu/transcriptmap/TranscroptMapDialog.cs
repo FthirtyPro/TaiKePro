@@ -26,9 +26,9 @@ public class TranscroptMapDialog : MonoBehaviour {
 
 
 
-	void OnShow(BtnTranscript transcript)
+	public void OnShow(BtnTranscript transcript)
 	{
-		//tween.PlayForward();
+		tween.PlayForward();
 		transcriptDes.text =transcript.transcriptDes;
 
 	}

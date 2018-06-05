@@ -6,10 +6,11 @@ public class TrascripMap : MonoBehaviour {
 
 	//private BtnTranscript bt
 	// Use this for initialization
-	private TweenScale dialog;
+	//private TweenScale dialog;
+	private TranscroptMapDialog dialog;
 	
 	void Start () {
-		dialog = transform.Find("TranscriptMapDialog").GetComponent<TweenScale>();
+		dialog = transform.Find("TranscriptMapDialog").GetComponent<TranscroptMapDialog>();
 	}
 	
 	// Update is called once per frame
@@ -22,7 +23,8 @@ public class TrascripMap : MonoBehaviour {
 		PlayerInfo info = PlayerInfo._instanc;
 		if(info.Level>transcript.needLevel)
 		{
-			dialog.PlayForward();
+			dialog.OnShow(transcript);
+			
 		}
 
 	}
