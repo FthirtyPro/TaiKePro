@@ -4,8 +4,29 @@ using UnityEngine;
 
 public class PlayerAnimationPlay : MonoBehaviour {
 
-	public void OnAttackButtonClick(bool ispress,PosType pos)
+    private Animator animator;
+    public Skill skill;
+
+    void Awake()
     {
-        //print("嘿哈");
+        animator =transform.GetComponent<Animator>();
+    }
+
+	public void OnAttackButtonClick(bool ispress, PosType posType)
+    {
+        if(posType ==PosType.Basic)
+        {
+           if(ispress)
+           {
+               animator.SetTrigger("attack");
+           }
+        }else{
+            if(ispress)
+            {
+                animator.SetBool("skill"+(int)posType,true);
+            }else{
+                 animator.SetBool("skill"+(int)posType,false);
+            }
+        }
     }
 }

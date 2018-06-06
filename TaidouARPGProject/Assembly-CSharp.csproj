@@ -227,6 +227,7 @@
      <Compile Include="Assets\Script\common\MessageManger.cs" />
      <Compile Include="Assets\Script\common\NpcDialog.cs" />
      <Compile Include="Assets\Script\common\NPCManager.cs" />
+     <Compile Include="Assets\Script\common\TranscripManager.cs" />
      <Compile Include="Assets\Script\mainmenu\knapsack\EquipPopup.cs" />
      <Compile Include="Assets\Script\mainmenu\knapsack\Inventory.cs" />
      <Compile Include="Assets\Script\mainmenu\knapsack\InventoryItem.cs" />
@@ -240,6 +241,7 @@
      <Compile Include="Assets\Script\mainmenu\knapsack\PowerShow.cs" />
      <Compile Include="Assets\Script\mainmenu\PlayerInfo.cs" />
      <Compile Include="Assets\Script\mainmenu\Skill\Skill.cs" />
+     <Compile Include="Assets\Script\mainmenu\Skill\SkillButton.cs" />
      <Compile Include="Assets\Script\mainmenu\Skill\SkillItemUI.cs" />
      <Compile Include="Assets\Script\mainmenu\Skill\SkillManager.cs" />
      <Compile Include="Assets\Script\mainmenu\Skill\SkillUI.cs" />
@@ -251,6 +253,7 @@
      <Compile Include="Assets\Script\mainmenu\transcriptmap\TranscroptMapDialog.cs" />
      <Compile Include="Assets\Script\mainmenu\transcriptmap\TrascripMap.cs" />
      <Compile Include="Assets\Script\Player\PlayerAnimatar.cs" />
+     <Compile Include="Assets\Script\Player\PlayerAnimationPlay.cs" />
      <Compile Include="Assets\Script\Player\PlayerMove.cs" />
      <Compile Include="Assets\Script\Player\PlayerNav.cs" />
      <Compile Include="Assets\Script\Player\PlayerVillageAnimatorl.cs" />
