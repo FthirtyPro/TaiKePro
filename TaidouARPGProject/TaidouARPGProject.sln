@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaidouARPGProject", "com.unity.postprocessing.Runtime.csproj", "{DBA34564-69ED-4013-4EB5-F1C5C7C09357}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaidouARPGProject", "Assembly-CSharp-firstpass.csproj", "{D54EE363-7A49-09B6-DFCD-F802BA6B7A7E}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaidouARPGProject", "Assembly-CSharp.csproj", "{B457FF0D-98E1-B771-D4BB-E9CFF9B01A5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaidouARPGProject", "Assembly-CSharp-Editor.csproj", "{EB52FFFB-3133-44D9-4F29-1BF3D30E3113}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaidouARPGProject", "com.unity.postprocessing.Editor.csproj", "{980CD383-8960-6BB2-A5DD-ECFA948D55A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaidouARPGProject", "Assembly-CSharp-Editor.csproj", "{EB52FFFB-3133-44D9-4F29-1BF3D30E3113}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,18 +21,22 @@ Global
 		{DBA34564-69ED-4013-4EB5-F1C5C7C09357}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBA34564-69ED-4013-4EB5-F1C5C7C09357}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBA34564-69ED-4013-4EB5-F1C5C7C09357}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D54EE363-7A49-09B6-DFCD-F802BA6B7A7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D54EE363-7A49-09B6-DFCD-F802BA6B7A7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D54EE363-7A49-09B6-DFCD-F802BA6B7A7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D54EE363-7A49-09B6-DFCD-F802BA6B7A7E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B457FF0D-98E1-B771-D4BB-E9CFF9B01A5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B457FF0D-98E1-B771-D4BB-E9CFF9B01A5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B457FF0D-98E1-B771-D4BB-E9CFF9B01A5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B457FF0D-98E1-B771-D4BB-E9CFF9B01A5F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EB52FFFB-3133-44D9-4F29-1BF3D30E3113}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EB52FFFB-3133-44D9-4F29-1BF3D30E3113}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EB52FFFB-3133-44D9-4F29-1BF3D30E3113}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EB52FFFB-3133-44D9-4F29-1BF3D30E3113}.Release|Any CPU.Build.0 = Release|Any CPU
 		{980CD383-8960-6BB2-A5DD-ECFA948D55A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{980CD383-8960-6BB2-A5DD-ECFA948D55A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{980CD383-8960-6BB2-A5DD-ECFA948D55A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{980CD383-8960-6BB2-A5DD-ECFA948D55A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB52FFFB-3133-44D9-4F29-1BF3D30E3113}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB52FFFB-3133-44D9-4F29-1BF3D30E3113}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB52FFFB-3133-44D9-4F29-1BF3D30E3113}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB52FFFB-3133-44D9-4F29-1BF3D30E3113}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

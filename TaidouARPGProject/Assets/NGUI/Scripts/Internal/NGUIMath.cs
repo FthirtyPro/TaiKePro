@@ -1,7 +1,7 @@
-//-------------------------------------------------
+//----------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2017 Tasharen Entertainment Inc
-//-------------------------------------------------
+// Copyright © 2011-2016 Tasharen Entertainment
+//----------------------------------------------
 
 using UnityEngine;
 using System;
@@ -403,7 +403,7 @@ static public class NGUIMath
 
 	static public Bounds CalculateRelativeWidgetBounds (Transform trans)
 	{
-		return CalculateRelativeWidgetBounds(trans, trans, !trans.gameObject.activeSelf);
+		return CalculateRelativeWidgetBounds(trans, trans, false);
 	}
 
 	/// <summary>
@@ -421,7 +421,7 @@ static public class NGUIMath
 
 	static public Bounds CalculateRelativeWidgetBounds (Transform relativeTo, Transform content)
 	{
-		return CalculateRelativeWidgetBounds(relativeTo, content, !content.gameObject.activeSelf);
+		return CalculateRelativeWidgetBounds(relativeTo, content, false);
 	}
 
 	/// <summary>

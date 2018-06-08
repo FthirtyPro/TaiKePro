@@ -228,6 +228,7 @@
      <Compile Include="Assets\Script\common\NpcDialog.cs" />
      <Compile Include="Assets\Script\common\NPCManager.cs" />
      <Compile Include="Assets\Script\common\TranscripManager.cs" />
+     <Compile Include="Assets\Script\Enemy\Enemy.cs" />
      <Compile Include="Assets\Script\mainmenu\knapsack\EquipPopup.cs" />
      <Compile Include="Assets\Script\mainmenu\knapsack\Inventory.cs" />
      <Compile Include="Assets\Script\mainmenu\knapsack\InventoryItem.cs" />
@@ -260,7 +261,7 @@
      <Compile Include="Assets\Script\Player\PlayervillageMove.cs" />
      <Compile Include="Assets\Script\start\ServerProperty.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
-     <None Include="Assets\NGUI\ReadMe - 3.11.4.txt" />
+     <None Include="Assets\NGUI\ReadMe - 3.11.0.txt" />
      <None Include="Assets\PostProcessing\Shaders\Builtins\FinalPass.shader" />
      <None Include="Assets\PostProcessing\Shaders\Debug\Waveform.compute" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked 1.shader" />
@@ -458,6 +459,8 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{D54EE363-7A49-09B6-DFCD-F802BA6B7A7E}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="com.unity.postprocessing.Editor.csproj">
       <Project>{980CD383-8960-6BB2-A5DD-ECFA948D55A9}</Project>      <Name>com.unity.postprocessing.Editor</Name>    </ProjectReference>
     <ProjectReference Include="com.unity.postprocessing.Runtime.csproj">

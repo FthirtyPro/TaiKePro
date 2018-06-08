@@ -21,6 +21,8 @@ void Awake()
 		{
 			rig.velocity = new Vector3(velocty*h,0,velocty*v);
 			transform.LookAt(new Vector3(h,0,v)+transform.position);
+
+			if(animator.GetCurrentAnimatorStateInfo(1).IsName("Enptor"))
 			animator.SetBool("Move",true);
 		}else{
 			rig.velocity = new Vector3(0,0,0);

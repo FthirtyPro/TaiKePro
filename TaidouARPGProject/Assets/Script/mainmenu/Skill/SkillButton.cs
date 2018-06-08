@@ -28,11 +28,11 @@ public class SkillButton : MonoBehaviour {
         if(mask==null)
         return;
 
-        if(coldTime>0)
+        if(coldTrate>0)
         {
           
-            coldTime-=Time.deltaTime;
-            mask.fillAmount=coldTime/coldTrate; 
+            coldTrate-=Time.deltaTime;
+            mask.fillAmount=coldTrate/coldTime; 
             
         }else{
            // print("00555");
@@ -50,7 +50,7 @@ public class SkillButton : MonoBehaviour {
         playaniPlay.OnAttackButtonClick(ispress,pos);
         if(ispress&&mask!=null)
         {
-            coldTime =coldTrate;
+            coldTrate =coldTime;
             print("0XX");
             
             Disable();
