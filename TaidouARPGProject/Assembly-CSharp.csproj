@@ -220,6 +220,8 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UITexture.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
+     <Compile Include="Assets\PlayEffect.cs" />
+     <Compile Include="Assets\PlayerAttack.cs" />
      <Compile Include="Assets\playerAutoMove.cs" />
      <Compile Include="Assets\Script\common\BottomBar.cs" />
      <Compile Include="Assets\Script\common\FollowTarget.cs" />
