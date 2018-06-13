@@ -229,6 +229,7 @@
      <Compile Include="Assets\Script\common\MessageManger.cs" />
      <Compile Include="Assets\Script\common\NpcDialog.cs" />
      <Compile Include="Assets\Script\common\NPCManager.cs" />
+     <Compile Include="Assets\Script\common\SoundManager.cs" />
      <Compile Include="Assets\Script\common\TranscripManager.cs" />
      <Compile Include="Assets\Script\Enemy\Enemy.cs" />
      <Compile Include="Assets\Script\mainmenu\knapsack\EquipPopup.cs" />

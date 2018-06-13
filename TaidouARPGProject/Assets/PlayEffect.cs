@@ -7,11 +7,7 @@ public class PlayEffect : MonoBehaviour {
 private Renderer[] renderArray;
 private NcCurveAnimation[]  nccurveArrey;
 
-void  Update()
-{
-   if(Input.GetMouseButton(0))
-   Show();
-}
+
 
 void Start()
 {
