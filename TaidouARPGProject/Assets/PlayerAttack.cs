@@ -132,7 +132,7 @@ public class PlayerAttack : MonoBehaviour
                 if (postion.z > -0.5f) //判断是否在角色前方
                 {
                     float dis = Vector3.Distance(go.transform.position, this.transform.position);
-                    print(dis);
+                   // print(dis);
                     if (dis < DisForward)
                     {
                         arrayList.Add(go);
@@ -150,7 +150,7 @@ public class PlayerAttack : MonoBehaviour
             {
 
                 float dis = Vector3.Distance(go.transform.position, this.transform.position);
-                print(dis);
+                //print(dis);
                 if (dis < DisAround)
                 {
                     arrayList.Add(go);
@@ -162,4 +162,27 @@ public class PlayerAttack : MonoBehaviour
 
         return arrayList;
     }
+
+
+
+    void ShowEffectSelfToTaget()
+    {
+        string effectName="FirePhoenixMobile";
+        PlayEffect pe;
+        effectDict.TryGetValue(effectName, out pe);
+         ArrayList arrayList = GetEnemyInAttackRang(AttackRang.forWard);
+        foreach(GameObject go in arrayList)
+        {
+            PlayEffect bird =GameObject.Instantiate(pe) as PlayEffect;
+            bird.transform.position = this.transform.position;
+            bird.GetComponent<EffectSettings>().Target=go;
+            
+        }
+
+      
+
+
+
+    }
+
 }

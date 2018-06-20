@@ -24,6 +24,7 @@ public class PlayerAnimationPlay : MonoBehaviour {
             if(ispress)
             {
                 animator.SetBool("skill"+(int)posType,true);
+                print("skill"+(int)posType);
             }else{
                  animator.SetBool("skill"+(int)posType,false);
             }

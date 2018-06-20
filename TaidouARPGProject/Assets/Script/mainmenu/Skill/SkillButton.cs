@@ -35,7 +35,7 @@ public class SkillButton : MonoBehaviour {
             mask.fillAmount=coldTrate/coldTime; 
             
         }else{
-           // print("00555");
+  
             
             mask.fillAmount =0;
            
@@ -51,7 +51,7 @@ public class SkillButton : MonoBehaviour {
         if(ispress&&mask!=null)
         {
             coldTrate =coldTime;
-            print("0XX");
+           // print("0XX");
             
             Disable();
         }
