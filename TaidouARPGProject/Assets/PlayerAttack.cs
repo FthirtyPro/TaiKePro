@@ -78,6 +78,17 @@ public class PlayerAttack : MonoBehaviour
                 //\\\\这里就处理敌人的事件响应
             }
         }
+         else if (attacks == "skill1")
+        {
+            ArrayList arrayList = GetEnemyInAttackRang(AttackRang.forWard);
+            foreach (GameObject go in arrayList)
+            {
+
+                go.SendMessage("TakeDamge", damage[0] + "," + proArray[3] + "," + proArray[4]);
+
+                //\\\\这里就处理敌人的事件响应
+            }
+        }
 
 
 
