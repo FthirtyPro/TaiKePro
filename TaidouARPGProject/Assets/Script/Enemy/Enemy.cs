@@ -6,7 +6,32 @@ public class Enemy : MonoBehaviour {
 
 	public int hp =200;
 	public GameObject damageEffectPrefab;
+
+	public float speed =2;
+	public CharacterController cc;
+
 	// Use this for initialization
+private void Start() {
+	cc =this.GetComponent<CharacterController>();
+}
+private void Update()
+{
+	 Move();
+}
+
+
+void  Move()
+{
+	Transform play = TranscripManager._instance.player.transform;
+	transform.LookAt(play);
+	Vector3 pos =transform.position;
+	pos.y=play.position.y;
+
+	cc.SimpleMove(transform.forward*speed);
+
+}
+
+
 	void TakeDamge(string agrs)
 	{
 		// 1.受伤动画

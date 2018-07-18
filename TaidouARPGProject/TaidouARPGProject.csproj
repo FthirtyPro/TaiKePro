@@ -282,6 +282,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="TaidouARPGProject.Plugins.csproj">
+      <Project>{9FCC2288-7E1C-112A-4A15-53831651BB67}</Project>
+      <Name>TaidouARPGProject.Plugins</Name>
+    </ProjectReference>
     <ProjectReference Include="com.unity.postprocessing.Editor.csproj">
       <Project>{8C3967EF-EA5C-CD2A-F191-ADB2A5FEC7D2}</Project>
       <Name>com.unity.postprocessing.Editor</Name>
@@ -461,6 +465,8 @@
     <Compile Include="Assets\NGUI\Scripts\UI\UITexture.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
+    <Compile Include="Assets\PlayEffect.cs" />
+    <Compile Include="Assets\PlayerAttack.cs" />
     <Compile Include="Assets\playerAutoMove.cs" />
     <Compile Include="Assets\Script\common\BottomBar.cs" />
     <Compile Include="Assets\Script\common\FollowTarget.cs" />
@@ -468,7 +474,9 @@
     <Compile Include="Assets\Script\common\MessageManger.cs" />
     <Compile Include="Assets\Script\common\NpcDialog.cs" />
     <Compile Include="Assets\Script\common\NPCManager.cs" />
+    <Compile Include="Assets\Script\common\SoundManager.cs" />
     <Compile Include="Assets\Script\common\TranscripManager.cs" />
+    <Compile Include="Assets\Script\Enemy\Enemy.cs" />
     <Compile Include="Assets\Script\mainmenu\knapsack\EquipPopup.cs" />
     <Compile Include="Assets\Script\mainmenu\knapsack\Inventory.cs" />
     <Compile Include="Assets\Script\mainmenu\knapsack\InventoryItem.cs" />
@@ -525,7 +533,7 @@
     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth.shader" />
     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Masked Colored.shader" />
-    <None Include="Assets\NGUI\ReadMe - 3.11.4.txt" />
+    <None Include="Assets\NGUI\ReadMe - 3.11.0.txt" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored (TextureClip).shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 1.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 2.shader" />
@@ -550,6 +558,8 @@
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 2.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 3.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed.shader" />
+    <None Include="Assets\Plugins\IGSoft_Resources\ToolResources\EffectShader\FXMaker_Mask Additive Tint.shader" />
+    <None Include="Assets\Plugins\IGSoft_Resources\ToolResources\EffectShader\FXMaker_Mask Alpha Blended Tint.shader" />
     <None Include="Assets\PostProcessing\Editor\com.unity.postprocessing.Editor.asmdef" />
     <None Include="Assets\PostProcessing\Runtime\com.unity.postprocessing.Runtime.asmdef" />
     <None Include="Assets\PostProcessing\Shaders\ACES.hlsl" />
