@@ -6,6 +6,13 @@ public class Enemy : MonoBehaviour {
 
 	public int hp =200;
 	public GameObject damageEffectPrefab;
+	public float attackRate=5;
+	public float attackTime =0;
+	public float attackDistance =2;
+	public float Distance =0;
+	public Animation ani;
+	public float timeRate;
+	public float timeLose=3;
 
 	public float speed =2;
 	public CharacterController cc;
@@ -13,10 +20,22 @@ public class Enemy : MonoBehaviour {
 	// Use this for initialization
 private void Start() {
 	cc =this.GetComponent<CharacterController>();
+	ani = GetComponent<Animation>();
+	//InvokeRepeating("Cal")
 }
 private void Update()
 {
-	 Move();
+	if(hp==0){
+	transform.Translate(-transform.up*0.4f*Time.deltaTime);
+	timeRate+=Time.deltaTime;
+	if(timeRate>=timeLose)
+	Destroy(this.gameObject);
+
+	return;
+	}
+	//(transform.position.y)*Time.deltaTime;
+
+	 AttackHit();
 }
 
 
@@ -28,6 +47,32 @@ void  Move()
 	pos.y=play.position.y;
 
 	cc.SimpleMove(transform.forward*speed);
+
+}
+
+void AttackHit()
+{
+	Transform play = TranscripManager._instance.player.transform;
+	Vector3 pos =transform.position;
+	pos.y=play.position.y;
+	 Distance=Vector3.Distance(play.position,pos);
+	if(Distance<attackDistance)
+	{
+		attackTime+=Time.deltaTime;
+		if(attackTime>attackRate)
+		{
+			ani.Play("attack01");
+			attackTime =0;
+		}
+		if(!ani.IsPlaying("attack01"))
+		{
+			ani.CrossFade("idle");
+		}
+
+	}else
+	{
+		Move();
+	}
 
 }
 
@@ -52,6 +97,7 @@ void  Move()
 	
 		if(hp<=0)
 		return;
+		Comboo._instance.ComboPlus();
 		int damage = int.Parse(proArray[0]);
 		hp-=damage;
 
@@ -63,8 +109,16 @@ void  Move()
 		//播放出血特效
 
 		GameObject.Instantiate(damageEffectPrefab,transform.position,Quaternion.identity); //实例化到当前位置。
+		if(hp<=0)
+		{
+			Dead();
+		}
 
 
+	}
+	void Dead()
+	{
+		ani.Play("die");
 	}
 
 
