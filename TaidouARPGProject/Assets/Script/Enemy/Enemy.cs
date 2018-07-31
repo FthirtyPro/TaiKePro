@@ -22,6 +22,8 @@ private void Start() {
 	cc =this.GetComponent<CharacterController>();
 	ani = GetComponent<Animation>();
 	//InvokeRepeating("Cal")
+	Transform hpbar =transform.Find("HpPoint");
+	HpBarManager._instance.GetHpBar(hpbar.gameObject);
 }
 private void Update()
 {

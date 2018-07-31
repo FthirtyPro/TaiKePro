@@ -79,6 +79,15 @@
      <Compile Include="Assets\Effects\Scripts\Share\UVTextureAnimator.cs" />
      <Compile Include="Assets\Effects\Standard Assets\Image Effects (Pro Only)\ImageEffectBase.cs" />
      <Compile Include="Assets\Effects\Standard Assets\Image Effects (Pro Only)\ImageEffects.cs" />
+     <Compile Include="Assets\HpBarManager.cs" />
+     <Compile Include="Assets\HUD Text\Examples\Scripts\ChatManager.cs" />
+     <Compile Include="Assets\HUD Text\Examples\Scripts\ChatParticipant.cs" />
+     <Compile Include="Assets\HUD Text\Examples\Scripts\ColliderDisplayText.cs" />
+     <Compile Include="Assets\HUD Text\Examples\Scripts\HUDRoot.cs" />
+     <Compile Include="Assets\HUD Text\Examples\Scripts\LightFlicker.cs" />
+     <Compile Include="Assets\HUD Text\Examples\Scripts\Rotate.cs" />
+     <Compile Include="Assets\HUD Text\Scripts\HUDText.cs" />
+     <Compile Include="Assets\HUD Text\Scripts\UIFollowTarget.cs" />
      <Compile Include="Assets\Model\Npc_boy\villarger_B_Boy\scripts\characterRotate.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />
@@ -337,6 +346,7 @@
      <None Include="Assets\PostProcessing\Shaders\Builtins\SubpixelMorphologicalAntialiasing.hlsl" />
      <None Include="Assets\PostProcessing\Shaders\Builtins\MotionBlur.shader" />
      <None Include="Assets\PostProcessing\Shaders\Builtins\SubpixelMorphologicalAntialiasing.shader" />
+     <None Include="Assets\HUD Text\ReadMe - 1.11.txt" />
      <None Include="Assets\PostProcessing\Shaders\Builtins\Texture2DLerp.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
      <None Include="Assets\PostProcessing\Shaders\Builtins\DeferredFog.shader" />
@@ -348,6 +358,7 @@
      <None Include="Assets\PostProcessing\Shaders\API\D3D9.hlsl" />
      <None Include="Assets\PostProcessing\Shaders\Builtins\Lut2DBaker.shader" />
      <None Include="Assets\Effects\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BrightPassFilter2.shader" />
+     <None Include="Assets\HUD Text\Examples\Atlases\Arimo20.txt" />
      <None Include="Assets\PostProcessing\Shaders\Builtins\AutoExposure.compute" />
      <None Include="Assets\PostProcessing\Shaders\Debug\Overlays.shader" />
      <None Include="Assets\PostProcessing\Shaders\API\Metal.hlsl" />
@@ -363,6 +374,7 @@
      <None Include="Assets\Effects\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\LensFlareCreate.shader" />
      <None Include="Assets\NGUI\Examples\Shaders\Refractive.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text (TextureClip).shader" />
+     <None Include="Assets\HUD Text\Examples\Atlases\Large.txt" />
      <None Include="Assets\PostProcessing\Shaders\API\D3D11.hlsl" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth.shader" />
      <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
