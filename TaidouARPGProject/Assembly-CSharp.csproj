@@ -79,7 +79,6 @@
      <Compile Include="Assets\Effects\Scripts\Share\UVTextureAnimator.cs" />
      <Compile Include="Assets\Effects\Standard Assets\Image Effects (Pro Only)\ImageEffectBase.cs" />
      <Compile Include="Assets\Effects\Standard Assets\Image Effects (Pro Only)\ImageEffects.cs" />
-     <Compile Include="Assets\HpBarManager.cs" />
      <Compile Include="Assets\HUD Text\Examples\Scripts\ChatManager.cs" />
      <Compile Include="Assets\HUD Text\Examples\Scripts\ChatParticipant.cs" />
      <Compile Include="Assets\HUD Text\Examples\Scripts\ColliderDisplayText.cs" />
@@ -229,13 +228,11 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UITexture.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
-     <Compile Include="Assets\PlayEffect.cs" />
-     <Compile Include="Assets\PlayerAttack.cs" />
-     <Compile Include="Assets\playerAutoMove.cs" />
      <Compile Include="Assets\Script\common\BottomBar.cs" />
      <Compile Include="Assets\Script\common\Comboo.cs" />
      <Compile Include="Assets\Script\common\FollowTarget.cs" />
      <Compile Include="Assets\Script\common\GameController.cs" />
+     <Compile Include="Assets\Script\common\HpBarManager.cs" />
      <Compile Include="Assets\Script\common\MessageManger.cs" />
      <Compile Include="Assets\Script\common\NpcDialog.cs" />
      <Compile Include="Assets\Script\common\NPCManager.cs" />
@@ -266,8 +263,11 @@
      <Compile Include="Assets\Script\mainmenu\transcriptmap\BtnTranscript.cs" />
      <Compile Include="Assets\Script\mainmenu\transcriptmap\TranscroptMapDialog.cs" />
      <Compile Include="Assets\Script\mainmenu\transcriptmap\TrascripMap.cs" />
+     <Compile Include="Assets\Script\Player\PlayEffect.cs" />
      <Compile Include="Assets\Script\Player\PlayerAnimatar.cs" />
      <Compile Include="Assets\Script\Player\PlayerAnimationPlay.cs" />
+     <Compile Include="Assets\Script\Player\PlayerAttack.cs" />
+     <Compile Include="Assets\Script\Player\playerAutoMove.cs" />
      <Compile Include="Assets\Script\Player\PlayerMove.cs" />
      <Compile Include="Assets\Script\Player\PlayerNav.cs" />
      <Compile Include="Assets\Script\Player\PlayerVillageAnimatorl.cs" />

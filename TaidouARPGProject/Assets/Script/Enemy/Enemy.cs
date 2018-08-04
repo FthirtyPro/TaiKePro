@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
 
 	public int hp =200;
+	private int hpTotle =0;
 	public GameObject damageEffectPrefab;
 	public float attackRate=5;
 	public float attackTime =0;
@@ -16,14 +17,33 @@ public class Enemy : MonoBehaviour {
 
 	public float speed =2;
 	public CharacterController cc;
+	private UISlider hpbarSlider;
+
+	private GameObject hudTextGameObject;
+	private GameObject hpbarGameObject;
+	private HUDText hudtext;
+
+
+
+	private GameObject hudtextGameObject;
+
 
 	// Use this for initialization
 private void Start() {
+	hpTotle =hp;
 	cc =this.GetComponent<CharacterController>();
 	ani = GetComponent<Animation>();
-	//InvokeRepeating("Cal")
-	Transform hpbar =transform.Find("HpPoint");
-	HpBarManager._instance.GetHpBar(hpbar.gameObject);
+
+	Transform hpbarpoint =transform.Find("HpPoint");
+
+	hpbarGameObject=HpBarManager._instance.GetHpBar(hpbarpoint.gameObject);
+	hpbarSlider =hpbarGameObject.transform.Find("Bg").GetComponent<UISlider>();
+
+
+	hudtextGameObject =HpBarManager._instance.GetHubtext(hpbarpoint.gameObject);
+	print("hudtext");
+	hudtext= hudtextGameObject.GetComponent<HUDText>();
+
 }
 private void Update()
 {
@@ -102,6 +122,11 @@ void AttackHit()
 		Comboo._instance.ComboPlus();
 		int damage = int.Parse(proArray[0]);
 		hp-=damage;
+		hpbarSlider.value =(float)hp/hpTotle;
+
+
+
+		hudtext.Add("-"+damage,Color.red,0.3f);
 
 		//被击退位移
 		float dis = float.Parse(proArray[1]);
@@ -121,6 +146,8 @@ void AttackHit()
 	void Dead()
 	{
 		ani.Play("die");
+		Destroy(hpbarGameObject);
+		Destroy(hudtextGameObject);
 	}
 
 
