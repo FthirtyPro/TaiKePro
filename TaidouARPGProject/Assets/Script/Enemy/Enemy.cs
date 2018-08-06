@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour {
 	public float timeRate;
 	public float timeLose=3;
 
+
+	public float  attackPower =20;
+
 	public float speed =2;
 	public CharacterController cc;
 	private UISlider hpbarSlider;
@@ -139,15 +142,44 @@ void AttackHit()
 		if(hp<=0)
 		{
 			Dead();
+			Destroy(this.gameObject);
 		}
 
 
 	}
 	void Dead()
 	{
-		ani.Play("die");
-		Destroy(hpbarGameObject);
+			Destroy(hpbarGameObject);
 		Destroy(hudtextGameObject);
+		this.GetComponent<Collider>().enabled=false;
+		int random =Random.Range(0,10);
+		if(random<=7)
+		{
+			
+		this.GetComponentInChildren<MeshExploder>().Explode();
+
+		}
+		else
+		{
+			ani.Play("die");
+		}
+		TranscripManager._instance.enemyList.Remove(this.gameObject);
+		
+	
+	}
+
+
+
+	void AttackHero() //攻击在主角身上的反应
+	{
+		Transform play = TranscripManager._instance.player.transform;
+		Vector3 pos =transform.position;
+		float Distance=Vector3.Distance(pos,play.position);
+		if(Distance<attackDistance)
+		{
+			play.SendMessage("TakeDamage",attackPower,SendMessageOptions.DontRequireReceiver);
+		}
+
 	}
 
 

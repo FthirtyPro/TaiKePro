@@ -87,6 +87,11 @@
      <Compile Include="Assets\HUD Text\Examples\Scripts\Rotate.cs" />
      <Compile Include="Assets\HUD Text\Scripts\HUDText.cs" />
      <Compile Include="Assets\HUD Text\Scripts\UIFollowTarget.cs" />
+     <Compile Include="Assets\Mesh Explosion\Internal\DestroyAfterTime.cs" />
+     <Compile Include="Assets\Mesh Explosion\Internal\DestroyOnFadeCompletion.cs" />
+     <Compile Include="Assets\Mesh Explosion\Internal\Fade.cs" />
+     <Compile Include="Assets\Mesh Explosion\Internal\MeshExplosion.cs" />
+     <Compile Include="Assets\Mesh Explosion\MeshExploder.cs" />
      <Compile Include="Assets\Model\Npc_boy\villarger_B_Boy\scripts\characterRotate.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />
@@ -379,6 +384,7 @@
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth.shader" />
      <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
      <None Include="Assets\PostProcessing\Shaders\Debug\Waveform.shader" />
+     <None Include="Assets\Mesh Explosion\Read Me.txt" />
      <None Include="Assets\PostProcessing\Shaders\API\XboxOne.hlsl" />
      <None Include="Assets\PostProcessing\Shaders\Sampling.hlsl" />
      <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
