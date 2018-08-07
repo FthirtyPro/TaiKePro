@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour {
 	public GameObject damageEffectPrefab;
 	public float attackRate=5;
 	public float attackTime =0;
-	public float attackDistance =2;
+	public float attackDistance =4;
 	public float Distance =0;
 	public Animation ani;
 	public float timeRate;
@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour {
 	private GameObject hudTextGameObject;
 	private GameObject hpbarGameObject;
 	private HUDText hudtext;
-
+	public int damage =30;
 
 
 	private GameObject hudtextGameObject;
@@ -44,7 +44,7 @@ private void Start() {
 
 
 	hudtextGameObject =HpBarManager._instance.GetHubtext(hpbarpoint.gameObject);
-	print("hudtext");
+	//print("hudtext");
 	hudtext= hudtextGameObject.GetComponent<HUDText>();
 
 }
