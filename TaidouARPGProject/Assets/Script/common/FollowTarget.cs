@@ -6,6 +6,7 @@ public class FollowTarget : MonoBehaviour {
     public Vector3 offset;
 
     public  Transform playerBip;
+    public  int smooth =2;
 
 
 	// Use this for initialization
@@ -15,6 +16,9 @@ public class FollowTarget : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position = playerBip.position + offset;
+        Vector3 carmerpos=playerBip.position + offset;
+	
+	transform.position =Vector3.Lerp(transform.position,carmerpos,smooth*Time.deltaTime);
+
 	}
 }
