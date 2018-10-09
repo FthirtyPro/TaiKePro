@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // Community contribution: http://www.tasharen.com/forum/index.php?topic=9268.0
 Shader "Hidden/Unlit/Premultiplied Colored (TextureClip)"
 {

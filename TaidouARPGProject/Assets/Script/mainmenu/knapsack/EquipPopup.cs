@@ -22,6 +22,8 @@ public class EquipPopup : MonoBehaviour {
     private UIButton upgradeButton;
     private KnapsackRoleEquip roleEquip;
 
+    public PowerShow power;
+
 
     void Awake()
     {
@@ -84,12 +86,19 @@ public class EquipPopup : MonoBehaviour {
     }
     public void OnClose()
     {
+        Close();
+        transform.parent.SendMessage("DisableButton");
+    }
+
+    public void Close()
+    {
         gameObject.SetActive(false);
 
         ClearObject();
     }
     public void OnEquip()
     {
+        int startValue = PlayerInfo._instanc.GetOverallPower();
         if(isLeft)
         {
             itUI.Clean();
@@ -107,6 +116,13 @@ public class EquipPopup : MonoBehaviour {
 
         ClearObject();
         gameObject.SetActive(false);
+        int endValue = PlayerInfo._instanc.GetOverallPower();
+        power.ShowPowerChange(startValue, endValue);
+        InventoryUI._instance.SendMessage("UpdageCount");
+
+        transform.parent.SendMessage("DisableButton");
+
+
 
     }
 
@@ -133,6 +149,11 @@ public class EquipPopup : MonoBehaviour {
             print(coinNeed);
             print(PlayerInfo._instanc.Coin);
            
+           
+        }
+        else
+        {
+            MessageManger._instance.ShowMessage("金币不足,无法升级",0.3f);
         }
     }
 

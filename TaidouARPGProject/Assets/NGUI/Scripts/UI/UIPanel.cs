@@ -1,7 +1,7 @@
-//-------------------------------------------------
+//----------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2017 Tasharen Entertainment Inc
-//-------------------------------------------------
+// Copyright © 2011-2016 Tasharen Entertainment
+//----------------------------------------------
 
 using UnityEngine;
 using System.Collections.Generic;
@@ -210,9 +210,7 @@ public class UIPanel : UIRect
 	static float[] mTemp = new float[4];
 	Vector2 mMin = Vector2.zero;
 	Vector2 mMax = Vector2.zero;
-#if !UNITY_5_5_OR_NEWER
 	bool mHalfPixelOffset = false;
-#endif
 	bool mSortWidgets = false;
 	bool mUpdateScroll = false;
 
@@ -288,12 +286,6 @@ public class UIPanel : UIRect
 	}
 
 	/// <summary>
-	/// Whether sorting order will be used or not. Sorting order is used with Unity's 2D system.
-	/// </summary>
-
-	public bool useSortingOrder = false;
-
-	/// <summary>
 	/// Sorting order value for the panel's draw calls, to be used with Unity's 2D system.
 	/// </summary>
 
@@ -347,17 +339,7 @@ public class UIPanel : UIRect
 	/// Whether the panel's drawn geometry needs to be offset by a half-pixel.
 	/// </summary>
 
-	public bool halfPixelOffset
-	{
-		get
-		{
-#if UNITY_5_5_OR_NEWER
-			return false;
-#else
-			return mHalfPixelOffset;
-#endif
-		}
-	}
+	public bool halfPixelOffset { get { return mHalfPixelOffset; } }
 
 	/// <summary>
 	/// Whether the camera is used to draw UI geometry.
@@ -387,11 +369,9 @@ public class UIPanel : UIRect
 				float pixelSize = (root != null) ? root.pixelSizeAdjustment : 1f;
 				float mod = (pixelSize / size.y) / mCam.orthographicSize;
 
-#if UNITY_5_5_OR_NEWER
-				bool x = false, y = false;
-#else
-				bool x = mHalfPixelOffset, y = mHalfPixelOffset;
-#endif
+				bool x = mHalfPixelOffset;
+				bool y = mHalfPixelOffset;
+
 				if ((Mathf.RoundToInt(size.x) & 1) == 1) x = !x;
 				if ((Mathf.RoundToInt(size.y) & 1) == 1) y = !y;
 
@@ -973,15 +953,14 @@ public class UIPanel : UIRect
 	{
 		base.Awake();
 
-#if !UNITY_5_5_OR_NEWER
 		mHalfPixelOffset = (Application.platform == RuntimePlatform.WindowsPlayer ||
- #if !UNITY_5_4
+			Application.platform == RuntimePlatform.XBOX360 ||
+#if UNITY_4_7 || UNITY_5_0 || UNITY_5_1 || UNITY_5_2 || UNITY_5_3
 			Application.platform == RuntimePlatform.WindowsWebPlayer ||
- #endif
+#endif
 			Application.platform == RuntimePlatform.WindowsEditor) &&
 			SystemInfo.graphicsDeviceVersion.Contains("Direct3D") &&
 			SystemInfo.graphicsShaderLevel < 40;
-#endif
 	}
 
 	/// <summary>
@@ -1261,7 +1240,7 @@ public class UIPanel : UIRect
 
 	void LateUpdate ()
 	{
-#if UNITY_EDITOR && !UNITY_5_5_OR_NEWER
+#if UNITY_EDITOR
 		if (mUpdateFrame != Time.frameCount || !Application.isPlaying)
 #else
 		if (mUpdateFrame != Time.frameCount)
@@ -1573,8 +1552,8 @@ public class UIPanel : UIRect
 			dc.renderQueue = (renderQueue == RenderQueue.Explicit) ? startingRenderQueue : startingRenderQueue + i;
 			dc.alwaysOnScreen = alwaysOnScreen &&
 				(mClipping == UIDrawCall.Clipping.None || mClipping == UIDrawCall.Clipping.ConstrainButDontClip);
-			dc.sortingOrder = useSortingOrder ? ((mSortingOrder == 0 && renderQueue == RenderQueue.Automatic) ? sortOrder : mSortingOrder) : 0;
-			dc.sortingLayerName = useSortingOrder ? mSortingLayerName : null;
+			dc.sortingOrder = (mSortingOrder == 0) ? sortOrder : mSortingOrder;
+			dc.sortingLayerName = mSortingLayerName;
 			dc.clipTexture = mClipTexture;
 #if !UNITY_4_7
 			dc.shadowMode = shadowMode;
@@ -1677,6 +1656,8 @@ public class UIPanel : UIRect
 					}
 				}
 #endif
+				
+
 				// First update the widget's transform
 				if (w.UpdateTransform(frame) || mResized || (mHasMoved && !alwaysOnScreen))
 				{
@@ -1714,10 +1695,9 @@ public class UIPanel : UIRect
 
 	public UIDrawCall FindDrawCall (UIWidget w)
 	{
-		var mat = w.material;
-		var tex = w.mainTexture;
-		var shader = w.shader;
-		var depth = w.depth;
+		Material mat = w.material;
+		Texture tex = w.mainTexture;
+		int depth = w.depth;
 
 		for (int i = 0; i < drawCalls.Count; ++i)
 		{
@@ -1727,7 +1707,7 @@ public class UIPanel : UIRect
 
 			if (dcStart <= depth && dcEnd >= depth)
 			{
-				if (dc.baseMaterial == mat && dc.shader == shader && dc.mainTexture == tex)
+				if (dc.baseMaterial == mat && dc.mainTexture == tex)
 				{
 					if (w.isVisible)
 					{

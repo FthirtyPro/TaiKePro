@@ -21,6 +21,8 @@ public enum PlayerType {
     FemaleAssassin
 }
 
+
+
 public class PlayerInfo : MonoBehaviour {
 
     public static PlayerInfo _instanc;
@@ -438,7 +440,7 @@ public class PlayerInfo : MonoBehaviour {
 
     public void DressOff(InventoryItem it)
     {
-        //it.IsDress = true;
+        it.IsDress = false;
         //bool isDressed = false;
         //InventoryItem inventoryItemDress = null;
         switch (it.Inventory.EquipType)
@@ -503,9 +505,82 @@ public class PlayerInfo : MonoBehaviour {
 
         }
 
-        it.IsDress = true;
+      // it.IsDress = true;
         InventoryUI._instance.AddInventory(it);
         OnPlayerInfoChanged(InfoType.Equip);
 
+    }
+
+    public void InventoryUse(InventoryItem it, int count)
+    {
+        //使用效果在这里实现；
+
+
+
+        //处理物品使用后是否还存在
+        it.Count -= count;
+        if(it.Count<=0)
+        {
+            InventoryManager._instance.inventoryItemList.Remove(it);
+        }
+    }
+
+    public int GetOverallPower() //方法得到总体的武力数值；
+    {
+        int power = this.Power;
+        if(helmInventoryItem!=null)
+        {
+            power += helmInventoryItem.Inventory.Power * (1 + (helmInventoryItem.Level - 1) / 10);
+        }
+        if(braceletInventoryItem!=null)
+        {
+            power += braceletInventoryItem.Inventory.Power * (1 + (braceletInventoryItem.Level - 1) / 10);
+
+        }
+        if (necklaceInventoryItem != null)
+        {
+            power += necklaceInventoryItem.Inventory.Power * (1 + (necklaceInventoryItem.Level - 1) / 10);
+
+        }
+        if (clothInventoryItem != null)
+        {
+            power += clothInventoryItem.Inventory.Power * (1 + (clothInventoryItem.Level - 1) / 10);
+
+        }
+        if (necklaceInventoryItem != null)
+        {
+            power += necklaceInventoryItem.Inventory.Power * (1 + (necklaceInventoryItem.Level - 1) / 10);
+
+        }
+        if (weaponInventoryItem != null)
+        {
+            power += weaponInventoryItem.Inventory.Power * (1 + (weaponInventoryItem.Level - 1) / 10);
+
+        }
+
+        if (shoesInventoryItem != null)
+        {
+            power += shoesInventoryItem.Inventory.Power * (1 + (shoesInventoryItem.Level - 1) / 10);
+
+        }
+        if (ringInventoryItem != null)
+        {
+            power += ringInventoryItem.Inventory.Power * (1 + (ringInventoryItem.Level - 1) / 10);
+
+        }
+        if (wingInventoryItem != null)
+        {
+            power += wingInventoryItem.Inventory.Power * (1 + (wingInventoryItem.Level - 1) / 10);
+
+        }
+
+
+        return (int)power;
+    }
+
+    public void AddCoin(int coin)
+    {
+        this.Coin += coin;
+        OnPlayerInfoChanged(InfoType.Coin);
     }
 }

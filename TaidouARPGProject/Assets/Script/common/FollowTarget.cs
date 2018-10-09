@@ -4,7 +4,10 @@ using System.Collections;
 public class FollowTarget : MonoBehaviour {
 
     public Vector3 offset;
-    private Transform playerBip;
+
+    public  Transform playerBip;
+    public  int smooth =2;
+
 
 	// Use this for initialization
 	void Start () {
@@ -13,6 +16,9 @@ public class FollowTarget : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position = playerBip.position + offset;
+        Vector3 carmerpos=playerBip.position + offset;
+	
+	transform.position =Vector3.Lerp(transform.position,carmerpos,smooth*Time.deltaTime);
+
 	}
 }

@@ -1,7 +1,8 @@
-//-------------------------------------------------
+
+//----------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2017 Tasharen Entertainment Inc
-//-------------------------------------------------
+// Copyright © 2011-2016 Tasharen Entertainment
+//----------------------------------------------
 
 //#define SHOW_HIDDEN_OBJECTS
 
@@ -266,7 +267,7 @@ public class UIDrawCall : MonoBehaviour
 		{
 			mTexture = value;
 			if (mBlock == null) mBlock = new MaterialPropertyBlock();
-			mBlock.SetTexture("_MainTex", value ?? Texture2D.whiteTexture);
+			mBlock.SetTexture("_MainTex", value);
 		}
 	}
 
@@ -575,21 +576,10 @@ public class UIDrawCall : MonoBehaviour
 #else
 				mMesh.SetVertices(verts);
 				mMesh.SetUVs(0, uvs);
+				mMesh.SetUVs(1, (uv2 != null && uv2.Count == vertexCount) ? uv2 : null);
 				mMesh.SetColors(cols);
-
- #if UNITY_5_4 || UNITY_5_5_OR_NEWER
-				mMesh.SetUVs(1, (uv2.Count == vertexCount) ? uv2 : null);
-				mMesh.SetNormals((norms.Count == vertexCount) ? norms : null);
-				mMesh.SetTangents((tans.Count == vertexCount) ? tans : null);
- #else
-				if (uv2.Count != vertexCount) uv2.Clear();
-				if (norms.Count != vertexCount) norms.Clear();
-				if (tans.Count != vertexCount) tans.Clear();
-
-				mMesh.SetUVs(1, uv2);
-				mMesh.SetNormals(norms);
-				mMesh.SetTangents(tans);
- #endif
+				mMesh.SetNormals((norms != null && norms.Count == vertexCount) ? norms : null);
+				mMesh.SetTangents((tans != null && tans.Count == vertexCount) ? tans : null);
 #endif
 				if (setIndices)
 				{
@@ -686,13 +676,13 @@ public class UIDrawCall : MonoBehaviour
 
 		for (int i = 0; i < vertexCount; i += 4)
 		{
-			rv[index++] = i;
+			rv[index++] = i + 2;
 			rv[index++] = i + 1;
-			rv[index++] = i + 2;
-
-			rv[index++] = i + 2;
-			rv[index++] = i + 3;
 			rv[index++] = i;
+
+			rv[index++] = i;
+			rv[index++] = i + 3;
+			rv[index++] = i + 2;
 		}
 
 		if (mCache.Count > maxIndexBufferCache) mCache.RemoveAt(0);
@@ -817,11 +807,7 @@ public class UIDrawCall : MonoBehaviour
 		if (dx9BugWorkaround == -1)
 		{
 			var pf = Application.platform;
-#if !UNITY_5_5_OR_NEWER
 			dx9BugWorkaround = ((pf == RuntimePlatform.WindowsPlayer || pf == RuntimePlatform.XBOX360) &&
-#else
-			dx9BugWorkaround = ((pf == RuntimePlatform.WindowsPlayer) &&
-#endif
 				SystemInfo.graphicsShaderLevel < 40 && SystemInfo.graphicsDeviceVersion.Contains("Direct3D")) ? 1 : 0;
 		}
 

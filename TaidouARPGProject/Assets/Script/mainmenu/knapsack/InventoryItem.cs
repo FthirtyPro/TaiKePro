@@ -57,7 +57,7 @@ public class InventoryItem  {
 
         set
         {
-            isDress = true;
+            isDress = value;
         }
     }
 }

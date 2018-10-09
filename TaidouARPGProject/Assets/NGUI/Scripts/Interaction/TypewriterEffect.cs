@@ -1,7 +1,7 @@
-//-------------------------------------------------
+//----------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2017 Tasharen Entertainment Inc
-//-------------------------------------------------
+// Copyright © 2011-2016 Tasharen Entertainment
+//----------------------------------------------
 
 using UnityEngine;
 using System.Text;
@@ -141,9 +141,7 @@ public class TypewriterEffect : MonoBehaviour
 
 		if (string.IsNullOrEmpty(mFullText)) return;
 
-		var len = mFullText.Length;
-
-		while (mCurrentOffset < len && mNextChar <= RealTime.time)
+		while (mCurrentOffset < mFullText.Length && mNextChar <= RealTime.time)
 		{
 			int lastOffset = mCurrentOffset;
 			charsPerSecond = Mathf.Max(1, charsPerSecond);
@@ -155,21 +153,21 @@ public class TypewriterEffect : MonoBehaviour
 			++mCurrentOffset;
 
 			// Reached the end? We're done.
-			if (mCurrentOffset > len) break;
+			if (mCurrentOffset > mFullText.Length) break;
 
 			// Periods and end-of-line characters should pause for a longer time.
 			float delay = 1f / charsPerSecond;
-			char c = (lastOffset < len) ? mFullText[lastOffset] : '\n';
+			char c = (lastOffset < mFullText.Length) ? mFullText[lastOffset] : '\n';
 
 			if (c == '\n')
 			{
 				delay += delayOnNewLine;
 			}
-			else if (lastOffset + 1 == len || mFullText[lastOffset + 1] <= ' ')
+			else if (lastOffset + 1 == mFullText.Length || mFullText[lastOffset + 1] <= ' ')
 			{
 				if (c == '.')
 				{
-					if (lastOffset + 2 < len && mFullText[lastOffset + 1] == '.' && mFullText[lastOffset + 2] == '.')
+					if (lastOffset + 2 < mFullText.Length && mFullText[lastOffset + 1] == '.' && mFullText[lastOffset + 2] == '.')
 					{
 						delay += delayOnPeriod * 3f;
 						lastOffset += 2;
@@ -210,7 +208,7 @@ public class TypewriterEffect : MonoBehaviour
 		}
 
 		// Alpha-based fading
-		if (mCurrentOffset >= len && mFade.size == 0)
+		if (mCurrentOffset >= mFullText.Length)
 		{
 			mLabel.text = mFullText;
 			current = this;

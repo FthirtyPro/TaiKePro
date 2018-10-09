@@ -1,7 +1,7 @@
-//-------------------------------------------------
+//----------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2017 Tasharen Entertainment Inc
-//-------------------------------------------------
+// Copyright © 2011-2016 Tasharen Entertainment
+//----------------------------------------------
 
 using UnityEngine;
 using System.Collections.Generic;
@@ -385,7 +385,6 @@ public class UICamera : MonoBehaviour
 	/// Simulate a right-click on OSX when the Command key is held and a left-click is used (for trackpad).
 	/// </summary>
 
-	[Tooltip("If enabled, command-click will result in a right-click event on OSX")]
 	public bool commandClick = true;
 
 	/// <summary>
@@ -547,16 +546,9 @@ public class UICamera : MonoBehaviour
 		{
 			if (mCurrentKey == KeyCode.None) return ControlScheme.Touch;
 			if (mCurrentKey >= KeyCode.JoystickButton0) return ControlScheme.Controller;
-			
-			if (current != null)
-			{
-				if (mLastScheme == ControlScheme.Controller && (mCurrentKey == current.submitKey0 || mCurrentKey == current.submitKey1))
-					return ControlScheme.Controller;
-
-				if (current.useMouse) return ControlScheme.Mouse;
-				if (current.useTouch) return ControlScheme.Touch;
+			if (current != null && mLastScheme == ControlScheme.Controller &&
+				(mCurrentKey == current.submitKey0 || mCurrentKey == current.submitKey1))
 				return ControlScheme.Controller;
-			}
 			return ControlScheme.Mouse;
 		}
 		set
@@ -793,27 +785,6 @@ public class UICamera : MonoBehaviour
 
 	static public GameObject tooltipObject { get { return mTooltip; } }
 
-#if !W2
-	/// <summary>
-	/// Whether this object is a part of the UI or not.
-	/// </summary>
-
-	static public bool IsPartOfUI (GameObject go)
-	{
-		if (go == null || go == fallThrough) return false;
-		return NGUITools.FindInParents<UIRoot>(go) != null;
-	}
-#else
-	// This is a simplified path I use in the Sightseer project. You are welcome to do the same if your UI is only on one layer.
-	static public bool IsPartOfUI (GameObject go)
-	{
-		if (go == null || go == fallThrough) return false;
-		if (mUILayer == -1) mUILayer = LayerMask.NameToLayer("UI");
-		return go.layer == mUILayer;
-	}
-	static int mUILayer = -1;
-#endif
-
 	/// <summary>
 	/// Whether the last raycast was over the UI.
 	/// </summary>
@@ -822,43 +793,23 @@ public class UICamera : MonoBehaviour
 	{
 		get
 		{
-			var frame = Time.frameCount;
+			if (currentTouch != null) return currentTouch.isOverUI;
 
-			if (mLastOverCheck != frame)
+			for (int i = 0, imax = activeTouches.Count; i < imax; ++i)
 			{
-				mLastOverCheck = frame;
-
-				if (currentTouch != null)
-				{
-					mLastOverResult = currentTouch.isOverUI;
-					return mLastOverResult;
-				}
-
-				for (int i = 0, imax = activeTouches.Count; i < imax; ++i)
-				{
-					var touch = activeTouches[i];
-
-					if (IsPartOfUI(touch.pressed))
-					{
-						mLastOverResult = true;
-						return mLastOverResult;
-					}
-				}
-
-				for (int i = 0; i < 3; ++i)
-				{
-					var m = mMouse[i];
-
-					if (IsPartOfUI(m.current))
-					{
-						mLastOverResult = true;
-						return mLastOverResult;
-					}
-				}
-
-				mLastOverResult = IsPartOfUI(controller.pressed);
+				MouseOrTouch touch = activeTouches[i];
+				if (touch.pressed != null && touch.pressed != fallThrough && NGUITools.FindInParents<UIRoot>(touch.pressed) != null) return true;
 			}
-			return mLastOverResult;
+
+			for (int i = 0; i < 3; ++i)
+			{
+				var m = mMouse[i];
+				if (m.current != null && m.current != fallThrough && NGUITools.FindInParents<UIRoot>(m.current) != null) return true;
+			}
+
+			if (controller.pressed != null && controller.pressed != fallThrough && NGUITools.FindInParents<UIRoot>(controller.pressed) != null) return true;
+
+			return false;
 		}
 	}
 
@@ -870,106 +821,27 @@ public class UICamera : MonoBehaviour
 	{
 		get
 		{
-			var frame = Time.frameCount;
+			if (inputHasFocus) return true;
+			if (currentTouch != null) return currentTouch.isOverUI;
 
-			if (mLastFocusCheck != frame)
+			for (int i = 0, imax = activeTouches.Count; i < imax; ++i)
 			{
-				mLastFocusCheck = frame;
-
-				if (inputHasFocus)
-				{
-					mLastFocusResult = true;
-					return mLastFocusResult;
-				}
-
-				if (currentTouch != null)
-				{
-					mLastFocusResult = currentTouch.isOverUI;
-					return mLastFocusResult;
-				}
-
-				for (int i = 0, imax = activeTouches.Count; i < imax; ++i)
-				{
-					var touch = activeTouches[i];
-
-					if (IsPartOfUI(touch.pressed))
-					{
-						mLastFocusResult = true;
-						return mLastFocusResult;
-					}
-				}
-
-				for (int i = 0; i < 3; ++i)
-				{
-					var m = mMouse[i];
-
-					if (IsPartOfUI(m.pressed) || IsPartOfUI(m.current))
-					{
-						mLastFocusResult = true;
-						return mLastFocusResult;
-					}
-				}
-
-				mLastFocusResult = IsPartOfUI(controller.pressed);
+				MouseOrTouch touch = activeTouches[i];
+				if (touch.pressed != null && touch.pressed != fallThrough && NGUITools.FindInParents<UIRoot>(touch.pressed) != null) return true;
 			}
-			return mLastFocusResult;
+
+			for (int i = 0; i < 3; ++i)
+			{
+				var m = mMouse[i];
+				if (m.pressed != null && m.pressed != fallThrough && NGUITools.FindInParents<UIRoot>(m.pressed) != null) return true;
+				if (m.current != null && m.current != fallThrough && NGUITools.FindInParents<UIRoot>(m.current) != null) return true;
+			}
+
+			if (controller.pressed != null && controller.pressed != fallThrough && NGUITools.FindInParents<UIRoot>(controller.pressed) != null) return true;
+
+			return false;
 		}
 	}
-
-	/// <summary>
-	/// Whether there is a active current focus on the UI -- either input, or an active touch.
-	/// </summary>
-
-	static public bool interactingWithUI
-	{
-		get
-		{
-			var frame = Time.frameCount;
-
-			if (mLastInteractionCheck != frame)
-			{
-				mLastInteractionCheck = frame;
-
-				if (inputHasFocus)
-				{
-					mLastInteractionResult = true;
-					return mLastInteractionResult;
-				}
-
-				for (int i = 0, imax = activeTouches.Count; i < imax; ++i)
-				{
-					MouseOrTouch touch = activeTouches[i];
-
-					if (IsPartOfUI(touch.pressed))
-					{
-						mLastInteractionResult = true;
-						return mLastInteractionResult;
-					}
-				}
-
-				for (int i = 0; i < 3; ++i)
-				{
-					var m = mMouse[i];
-
-					if (IsPartOfUI(m.pressed))
-					{
-						mLastInteractionResult = true;
-						return mLastInteractionResult;
-					}
-				}
-
-				mLastInteractionResult = IsPartOfUI(controller.pressed);
-			}
-			return mLastInteractionResult;
-		}
-	}
-
-	static int mLastInteractionCheck = -1;
-	static bool mLastInteractionResult = false;
-	static int mLastFocusCheck = -1;
-	static bool mLastFocusResult = false;
-	static int mLastOverCheck = -1;
-	static bool mLastOverResult = false;
 
 	static GameObject mRayHitObject;
 	static GameObject mHover;
@@ -985,7 +857,7 @@ public class UICamera : MonoBehaviour
 	{
 		get
 		{
-			if (currentTouch != null && (currentScheme != ControlScheme.Mouse || currentTouch.dragStarted)) return currentTouch.current;
+			if (currentTouch != null && currentTouch.dragStarted) return currentTouch.current;
 			if (mHover && mHover.activeInHierarchy) return mHover;
 			mHover = null;
 			return null;
@@ -1030,15 +902,9 @@ public class UICamera : MonoBehaviour
 			{
 				if (mHover != controller.current)
 				{
-#if UNITY_5_5_OR_NEWER
 					UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
 					if (mHover.GetComponent<UIKeyNavigation>() != null) controller.current = mHover;
 					UnityEngine.Profiling.Profiler.EndSample();
-#else
-					Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
-					if (mHover.GetComponent<UIKeyNavigation>() != null) controller.current = mHover;
-					Profiler.EndSample();
-#endif
 				}
 
 				// Locate the appropriate camera for the new object
@@ -1190,18 +1056,10 @@ public class UICamera : MonoBehaviour
 
 			if (value != null)
 			{
-#if UNITY_5_5_OR_NEWER
 				UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
-#else
-				Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
-#endif
 				UIKeyNavigation nav = value.GetComponent<UIKeyNavigation>();
 				if (nav != null) controller.current = value;
-#if UNITY_5_5_OR_NEWER
 				UnityEngine.Profiling.Profiler.EndSample();
-#else
-				Profiler.EndSample();
-#endif
 			}
 
 			// Set the camera for events
@@ -1226,15 +1084,9 @@ public class UICamera : MonoBehaviour
 			// Set the selection
 			if (mSelected)
 			{
-#if UNITY_5_5_OR_NEWER
 				UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
 				mInputFocus = (mSelected.activeInHierarchy && mSelected.GetComponent<UIInput>() != null);
 				UnityEngine.Profiling.Profiler.EndSample();
-#else
-				Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
-				mInputFocus = (mSelected.activeInHierarchy && mSelected.GetComponent<UIInput>() != null);
-				Profiler.EndSample();
-#endif
 				if (onSelect != null) onSelect(mSelected, true);
 				Notify(mSelected, "OnSelect", true);
 			}
@@ -1385,11 +1237,7 @@ public class UICamera : MonoBehaviour
 
 	static Rigidbody FindRootRigidbody (Transform trans)
 	{
-#if UNITY_5_5_OR_NEWER
 		UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
-#else
-		Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
-#endif
 
 		while (trans != null)
 		{
@@ -1401,20 +1249,12 @@ public class UICamera : MonoBehaviour
 #endif
 			if (rb != null)
 			{
-#if UNITY_5_5_OR_NEWER
 				UnityEngine.Profiling.Profiler.EndSample();
-#else
-				Profiler.EndSample();
-#endif
 				return rb;
 			}
 			trans = trans.parent;
 		}
-#if UNITY_5_5_OR_NEWER
 		UnityEngine.Profiling.Profiler.EndSample();
-#else
-		Profiler.EndSample();
-#endif
 		return null;
 	}
 
@@ -1424,11 +1264,7 @@ public class UICamera : MonoBehaviour
 
 	static Rigidbody2D FindRootRigidbody2D (Transform trans)
 	{
-#if UNITY_5_5_OR_NEWER
 		UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
-#else
-		Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
-#endif
 
 		while (trans != null)
 		{
@@ -1440,20 +1276,12 @@ public class UICamera : MonoBehaviour
 #endif
 			if (rb != null)
 			{
-#if UNITY_5_5_OR_NEWER
 				UnityEngine.Profiling.Profiler.EndSample();
-#else
-				Profiler.EndSample();
-#endif
 				return rb;
 			}
 			trans = trans.parent;
 		}
-#if UNITY_5_5_OR_NEWER
 		UnityEngine.Profiling.Profiler.EndSample();
-#else
-		Profiler.EndSample();
-#endif
 		return null;
 	}
 
@@ -1542,15 +1370,9 @@ public class UICamera : MonoBehaviour
 					for (int b = 0; b < hitCount; ++b)
 					{
 						GameObject go = mRayHits[b].collider.gameObject;
-#if UNITY_5_5_OR_NEWER
 						UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
 						UIWidget w = go.GetComponent<UIWidget>();
 						UnityEngine.Profiling.Profiler.EndSample();
-#else
-						Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
-						UIWidget w = go.GetComponent<UIWidget>();
-						Profiler.EndSample();
-#endif
 
 						if (w != null)
 						{
@@ -1597,15 +1419,9 @@ public class UICamera : MonoBehaviour
 				else if (hitCount == 1)
 				{
 					GameObject go = mRayHits[0].collider.gameObject;
-#if UNITY_5_5_OR_NEWER
 					UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
 					UIWidget w = go.GetComponent<UIWidget>();
 					UnityEngine.Profiling.Profiler.EndSample();
-#else
-					Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
-					UIWidget w = go.GetComponent<UIWidget>();
-					Profiler.EndSample();
-#endif
 
 					if (w != null)
 					{
@@ -1668,15 +1484,9 @@ public class UICamera : MonoBehaviour
 						for (int b = 0; b < hitCount; ++b)
 						{
 							GameObject go = mOverlap[b].gameObject;
-#if UNITY_5_5_OR_NEWER
 							UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
 							UIWidget w = go.GetComponent<UIWidget>();
 							UnityEngine.Profiling.Profiler.EndSample();
-#else
-							Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
-							UIWidget w = go.GetComponent<UIWidget>();
-							Profiler.EndSample();
-#endif
 
 							if (w != null)
 							{
@@ -1719,15 +1529,9 @@ public class UICamera : MonoBehaviour
 					else if (hitCount == 1)
 					{
 						var go = mOverlap[0].gameObject;
-#if UNITY_5_5_OR_NEWER
 						UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
 						var w = go.GetComponent<UIWidget>();
 						UnityEngine.Profiling.Profiler.EndSample();
-#else
-						Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
-						var w = go.GetComponent<UIWidget>();
-						Profiler.EndSample();
-#endif
 
 						if (w != null)
 						{
@@ -1909,11 +1713,8 @@ public class UICamera : MonoBehaviour
 #if (UNITY_IPHONE || UNITY_ANDROID || UNITY_WP8 || UNITY_WP_8_1 || UNITY_BLACKBERRY || UNITY_WINRT || UNITY_METRO)
 		currentScheme = ControlScheme.Touch;
 #else
-#if !UNITY_5_5_OR_NEWER
-		if (Application.platform == RuntimePlatform.PS3 || Application.platform == RuntimePlatform.XBOX360)
-#else
-		if (Application.platform == RuntimePlatform.PS4 || Application.platform == RuntimePlatform.XboxOne)
-#endif
+		if (Application.platform == RuntimePlatform.PS3 ||
+			Application.platform == RuntimePlatform.XBOX360)
 		{
 			currentScheme = ControlScheme.Controller;
 		}
@@ -2128,7 +1929,7 @@ public class UICamera : MonoBehaviour
 		}
 
 		// We're currently using touches -- do nothing
-		if (currentScheme == ControlScheme.Touch && activeTouches.Count > 0) return;
+		if (currentScheme == ControlScheme.Touch) return;
 
 		currentTouch = mMouse[0];
 
@@ -2596,30 +2397,18 @@ public class UICamera : MonoBehaviour
 
 				if (currentTouch.pressed != null)
 				{
-#if UNITY_5_5_OR_NEWER
 					UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
 					UIKeyNavigation nav = currentTouch.pressed.GetComponent<UIKeyNavigation>();
 					UnityEngine.Profiling.Profiler.EndSample();
-#else
-					Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
-					UIKeyNavigation nav = currentTouch.pressed.GetComponent<UIKeyNavigation>();
-					Profiler.EndSample();
-#endif
 					if (nav != null) controller.current = currentTouch.pressed;
 				}
 
 				// Set the selection
 				if (mSelected)
 				{
-#if UNITY_5_5_OR_NEWER
 					UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
 					mInputFocus = (mSelected.activeInHierarchy && mSelected.GetComponent<UIInput>() != null);
 					UnityEngine.Profiling.Profiler.EndSample();
-#else
-					Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
-					mInputFocus = (mSelected.activeInHierarchy && mSelected.GetComponent<UIInput>() != null);
-					Profiler.EndSample();
-#endif
 					if (onSelect != null) onSelect(mSelected, true);
 					Notify(mSelected, "OnSelect", true);
 				}
@@ -2731,15 +2520,9 @@ public class UICamera : MonoBehaviour
 			// Send a hover message to the object
 			if (isMouse)
 			{
-#if UNITY_5_5_OR_NEWER
 				UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
 				var hasCollider = HasCollider(currentTouch.pressed);
 				UnityEngine.Profiling.Profiler.EndSample();
-#else
-				Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
-				var hasCollider = HasCollider(currentTouch.pressed);
-				Profiler.EndSample();
-#endif
 
 				if (hasCollider)
 				{
@@ -2820,7 +2603,7 @@ public class UICamera : MonoBehaviour
 			ProcessPress(pressed, click, drag);
 
 			// Hold event = show tooltip
-			if (tooltipDelay != 0f && currentTouch.deltaTime > tooltipDelay)
+			if (currentTouch.deltaTime > tooltipDelay)
 			{
 				if (currentTouch.pressed == currentTouch.current && mTooltipTime != 0f && !currentTouch.dragStarted)
 				{

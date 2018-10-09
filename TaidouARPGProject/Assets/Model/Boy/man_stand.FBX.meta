@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 78b47c93ea2ed1f4485e72f398e73ec0
-timeCreated: 1514462291
+timeCreated: 1528190814
 licenseType: Pro
 ModelImporter:
   serializedVersion: 22
@@ -65,28 +65,6 @@ ModelImporter:
     100114: ce01_leg01
     100116: lod1
     100118: //RootNode
-    100120: Particle View 01
-    100122: Particle View 01 1
-    100124: Particle View 01 10
-    100126: Particle View 01 11
-    100128: Particle View 01 12
-    100130: Particle View 01 13
-    100132: Particle View 01 14
-    100134: Particle View 01 15
-    100136: Particle View 01 16
-    100138: Particle View 01 17
-    100140: Particle View 01 18
-    100142: Particle View 01 19
-    100144: Particle View 01 2
-    100146: Particle View 01 20
-    100148: Particle View 01 21
-    100150: Particle View 01 3
-    100152: Particle View 01 4
-    100154: Particle View 01 5
-    100156: Particle View 01 6
-    100158: Particle View 01 7
-    100160: Particle View 01 8
-    100162: Particle View 01 9
     400000: Bip01
     400002: Bip01 Footsteps
     400004: Bip01 Head
@@ -147,33 +125,12 @@ ModelImporter:
     400114: ce01_leg01
     400116: lod1
     400118: //RootNode
-    400120: Particle View 01
-    400122: Particle View 01 1
-    400124: Particle View 01 10
-    400126: Particle View 01 11
-    400128: Particle View 01 12
-    400130: Particle View 01 13
-    400132: Particle View 01 14
-    400134: Particle View 01 15
-    400136: Particle View 01 16
-    400138: Particle View 01 17
-    400140: Particle View 01 18
-    400142: Particle View 01 19
-    400144: Particle View 01 2
-    400146: Particle View 01 20
-    400148: Particle View 01 21
-    400150: Particle View 01 3
-    400152: Particle View 01 4
-    400154: Particle View 01 5
-    400156: Particle View 01 6
-    400158: Particle View 01 7
-    400160: Particle View 01 8
-    400162: Particle View 01 9
+    2100000: 'Material #41'
+    2100002: 'Material #42'
     4300000: ce01_leg01
     4300002: lod1
     7400000: Take 001
     9500000: //RootNode
-    11100000: //RootNode
     13700000: ce01_leg01
     13700002: lod1
   externalObjects:
@@ -191,7 +148,7 @@ ModelImporter:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -218,14 +175,14 @@ ModelImporter:
       takeName: Take 001
       firstFrame: 0
       lastFrame: 40
-      wrapMode: 2
+      wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 1
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -285,10 +242,10 @@ ModelImporter:
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

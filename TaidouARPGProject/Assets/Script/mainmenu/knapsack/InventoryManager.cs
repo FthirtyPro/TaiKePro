@@ -98,12 +98,16 @@ public class InventoryManager : MonoBehaviour
             _inventory.Des = proArray[13];
 
             inventoryDict.Add(_inventory.Id, _inventory);
+            
 
                 
         }
     }
    
-   
+    public void RemoveInventoryItem(InventoryItem it)
+    {
+        this.inventoryItemList.Remove(it);
+    }
    
    
     void ReadServeInventoryItem()
@@ -114,6 +118,7 @@ public class InventoryManager : MonoBehaviour
 
             Inventory n = null;
             inventoryDict.TryGetValue(id, out n);
+            //print(n);
     
             if (n.Inventorytype == InventoryType.Euqip)//如果是武器类型，那么判断有几个，级别是多少，数量多少
             {
@@ -154,12 +159,17 @@ public class InventoryManager : MonoBehaviour
 
                 }
             }
+           
         }
 
-   OnInventoryChange();
+  OnInventoryChange();
 
     }
 }
+
+
+
+
 
 
 //到这里角色的装备初始化已经完成了

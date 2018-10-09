@@ -61,9 +61,9 @@ public class InventoryItemUI : MonoBehaviour {
         Label.text = "bg_道具";
     }
 
-    public void OnPress(bool isPress)
+    public void OnClick()
     {
-        if (isPress&&it!=null)
+        if (it!=null)
         {
             object[] objectArray = new object[3];
             objectArray[0] = it;
@@ -73,6 +73,22 @@ public class InventoryItemUI : MonoBehaviour {
             transform.parent.parent.parent.SendMessage("OnEquipClick", objectArray);
 
 
+        }
+    }
+
+    //icon数量减少
+    public void ChangeCount(int count)
+    {
+        if(it.Count-count<=0)
+        {
+            Clean();
+        }else if(it.Count-count==1)
+        {
+            Label.text = "";
+        }
+        else
+        {
+            Label.text = (it.Count - count).ToString();
         }
     }
 
