@@ -214,7 +214,7 @@ public class PlayerAttack : MonoBehaviour
         {
             PlayEffect bird =GameObject.Instantiate(pe) as PlayEffect;
             bird.transform.position = this.transform.position;
-            bird.GetComponent<EffectSettings>().Target=go;
+           // bird.GetComponent<EffectSettings>().Target=go;
             
         }
 

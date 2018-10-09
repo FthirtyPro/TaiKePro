@@ -5,14 +5,14 @@ using UnityEngine;
 public class PlayEffect : MonoBehaviour {
 
 private Renderer[] renderArray;
-private NcCurveAnimation[]  nccurveArrey;
+//private NcCurveAnimation[]  nccurveArrey;
 
 
 
 void Start()
 {
     renderArray = this.GetComponentsInChildren<Renderer>();
-    nccurveArrey = this.GetComponentsInChildren<NcCurveAnimation>();
+   // nccurveArrey = this.GetComponentsInChildren<NcCurveAnimation>();
 }
 
 public void Show()
@@ -21,10 +21,10 @@ public void Show()
     {
         render.enabled =true;
     }
-    foreach(NcCurveAnimation  Ncc in nccurveArrey)
-    {
-        Ncc.ResetAnimation();
-    }
+    // foreach(NcCurveAnimation  Ncc in nccurveArrey)
+    // {
+    //     Ncc.ResetAnimation();
+    // }
 }
 
 
